@@ -1,894 +1,502 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>日常選書店｜READ A LITTLE, DREAM A LOT</title>
-
-    <!-- Bootstrap 5.2.3 -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-
-    <style>
-        /* CSS:GENERAL-START */
-        :root {
-            --orange: #f47745;
-            --yellow: #f7ca62;
-            --green: #668b68;
-            --blue: #8bc5d6;
-            --pink: #ef9c9c;
-            --cream: #fff8ed;
-            --paper: #fffdf8;
-            --dark: #303c32;
-            --muted: #77766d;
-            --line: #e9dfd0;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            color: var(--dark);
-            background-color: var(--cream);
-            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-        }
-
-        .container {
-            max-width: 1320px;
-        }
-
-        /* CSS:GENERAL-END */
-
-
-        /* CSS:HERO-START */
-        .store-header {
-            position: relative;
-            overflow: hidden;
-            padding: 25px 20px 45px;
-            background-color: #f6d9b8;
-            border-radius: 0 0 35px 35px;
-        }
-
-        .store-topline {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            max-width: 1200px;
-            margin: 0 auto 45px;
-        }
-
-        .store-logo {
-            color: var(--dark);
-            font-size: 23px;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .store-logo span {
-            color: var(--orange);
-        }
-
-        .store-tagline {
-            color: #675b4b;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 850px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-label {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 8px 17px;
-            color: white;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            background-color: var(--green);
-            border-radius: 30px;
-        }
-
-        .store-title {
-            margin: 0;
-            font-size: clamp(38px, 7vw, 76px);
-            font-weight: 900;
-            letter-spacing: 5px;
-            line-height: 1.3;
-        }
-
-        .store-title span {
-            color: var(--orange);
-        }
-
-        .hero-description {
-            margin-top: 18px;
-            margin-bottom: 25px;
-            color: #5f584d;
-            font-size: clamp(14px, 2vw, 17px);
-            line-height: 2;
-        }
-
-        .hero-button {
-            display: inline-block;
-            padding: 13px 28px;
-            color: white;
-            font-size: 15px;
-            font-weight: 800;
-            text-decoration: none;
-            background-color: var(--dark);
-            border-radius: 8px;
-            transition: background-color 0.3s ease,
-                transform 0.3s ease;
-        }
-
-        .hero-button:hover {
-            color: white;
-            background-color: var(--orange);
-            transform: translateY(-3px);
-        }
-
-        .hero-decoration {
-            position: absolute;
-            top: 100px;
-            right: 5%;
-            color: rgba(255, 255, 255, 0.55);
-            font-size: clamp(60px, 12vw, 150px);
-            transform: rotate(12deg);
-            pointer-events: none;
-        }
-
-        /* CSS:HERO-END */
-
-
-        /* CSS:SECTION-START */
-        .section-heading {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 45px;
-            margin-bottom: 12px;
-            font-size: clamp(23px, 3vw, 32px);
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .section-heading .heading-number {
-            color: var(--orange);
-            font-size: 15px;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .section-description {
-            margin-bottom: 22px;
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .section-line {
-            width: 55px;
-            height: 5px;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            background-color: var(--yellow);
-            border-radius: 10px;
-        }
-
-        /* CSS:SECTION-END */
-
-
-        /* CSS:BOOK-CARD-START */
-        .book-card {
-            height: 100%;
-            overflow: hidden;
-            background-color: var(--paper);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            transition: transform 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .book-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 25px rgba(65, 54, 38, 0.13);
-        }
-
-        .book-image-wrap {
-            position: relative;
-            overflow: hidden;
-            background-color: #eee7dc;
-        }
-
-        .book-image {
-            display: block;
-            width: 100%;
-            height: 245px;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .book-card:hover .book-image {
-            transform: scale(1.05);
-        }
-
-        .book-content {
-            padding: 18px;
-        }
-
-        .book-label {
-            display: inline-block;
-            margin-bottom: 12px;
-            padding: 5px 10px;
-            color: #594d3d;
-            font-size: 11px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            background-color: #f7e7b8;
-            border-radius: 4px;
-        }
-
-        .book-title {
-            margin-bottom: 10px;
-            font-size: 20px;
-            font-weight: 900;
-            line-height: 1.5;
-        }
-
-        .book-description {
-            margin-bottom: 17px;
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.9;
-        }
-
-        .book-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            padding-top: 12px;
-            border-top: 1px solid var(--line);
-        }
-
-        .book-category {
-            color: var(--green);
-            font-size: 12px;
-            font-weight: 800;
-        }
-
-        .book-arrow {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-            color: white;
-            font-size: 17px;
-            background-color: var(--orange);
-            border-radius: 50%;
-        }
-
-        /* CSS:BOOK-CARD-END */
-
-
-        /* CSS:STORE-NOTE-START */
-        .store-note {
-            margin-top: 50px;
-            padding: 30px 25px;
-            text-align: center;
-            background-color: #e4eddd;
-            border-radius: 18px;
-        }
-
-        .store-note-title {
-            margin-bottom: 12px;
-            font-size: clamp(22px, 4vw, 30px);
-            font-weight: 900;
-        }
-
-        .store-note-text {
-            margin-bottom: 0;
-            color: #667363;
-            font-size: 14px;
-            line-height: 2;
-        }
-
-        /* CSS:STORE-NOTE-END */
-
-
-        /* CSS:FOOTER-START */
-        .store-footer {
-            margin-top: 45px;
-            padding: 35px 15px;
-            color: #fff8ed;
-            text-align: center;
-            background-color: var(--dark);
-            border-radius: 25px 25px 0 0;
-        }
-
-        .footer-logo {
-            margin-bottom: 10px;
-            color: var(--yellow);
-            font-size: 27px;
-            font-weight: 900;
-            letter-spacing: 3px;
-        }
-
-        .footer-text {
-            margin-bottom: 8px;
-            font-size: 13px;
-            line-height: 1.9;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 18px;
-            margin: 18px 0;
-        }
-
-        .footer-links a {
-            color: #fff8ed;
-            font-size: 13px;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: var(--yellow);
-        }
-
-        /* CSS:FOOTER-END */
-
-
-        /* CSS:RWD-START */
-        @media screen and (max-width: 767px) {
-            .store-header {
-                padding: 20px 15px 35px;
-                border-radius: 0 0 22px 22px;
-            }
-
-            .store-topline {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 5px;
-                margin-bottom: 35px;
-            }
-
-            .store-logo {
-                font-size: 21px;
-            }
-
-            .store-tagline {
-                font-size: 10px;
-            }
-
-            .store-title {
-                letter-spacing: 2px;
-            }
-
-            .hero-description {
-                font-size: 13px;
-            }
-
-            .hero-decoration {
-                top: 45px;
-                right: -10px;
-                opacity: 0.5;
-            }
-
-            .section-heading {
-                margin-top: 32px;
-            }
-
-            .book-image {
-                height: 175px;
-            }
-
-            .book-content {
-                padding: 12px;
-            }
-
-            .book-title {
-                font-size: 17px;
-            }
-
-            .book-description {
-                font-size: 12px;
-            }
-
-            .book-label {
-                font-size: 10px;
-            }
-
-            .book-bottom {
-                gap: 4px;
-            }
-
-            .book-category {
-                font-size: 11px;
-            }
-
-            .store-note {
-                padding: 25px 16px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            .book-card,
-            .book-image,
-            .hero-button {
-                transition: none;
-            }
-
-            .book-card:hover,
-            .hero-button:hover {
-                transform: none;
-            }
-
-            .book-card:hover .book-image {
-                transform: none;
-            }
-        }
-
-        /* CSS:RWD-END */
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="生活科技應用師個人履歷：個人簡介、工作經驗、學習歷程與專業技能。">
+  <title>個人履歷｜生活科技應用師</title>
+
+  <!-- Bootstrap 5：本頁唯一使用的外部框架 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --forest: #263c35;
+      --forest-light: #3f5d50;
+      --magic-blue: #9dbdce;
+      --magic-blue-dark: #527b91;
+      --cream: #f6f2e8;
+      --paper: #fffdf7;
+      --gold: #c8a96b;
+      --ink: #29332f;
+      --muted: #68736d;
+      --line: #dce3da;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.8;
+    }
+    a { color: var(--magic-blue-dark); }
+    .navbar {
+      background: rgba(38, 60, 53, .97);
+      box-shadow: 0 4px 18px rgba(28, 44, 38, .12);
+    }
+    .navbar-brand {
+      color: var(--cream);
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .navbar-brand:hover { color: #fff; }
+    .nav-link {
+      color: rgba(255, 253, 247, .82);
+      margin-left: .45rem;
+      transition: color .2s ease;
+    }
+    .nav-link:hover, .nav-link:focus { color: var(--gold); }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 7.5rem 0 6.5rem;
+      color: var(--paper);
+      background:
+        radial-gradient(ellipse at 82% 18%, rgba(157, 189, 206, .26), transparent 28%),
+        radial-gradient(ellipse at 8% 90%, rgba(200, 169, 107, .14), transparent 30%),
+        linear-gradient(135deg, #1d302a 0%, #304a40 55%, #527b78 100%);
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(246, 242, 232, .15);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::before { width: 390px; height: 390px; right: -105px; top: -150px; }
+    .hero::after { width: 260px; height: 260px; right: -40px; top: -85px; }
+    .hero-content { position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-block;
+      padding: .35rem .85rem;
+      border: 1px solid rgba(200, 169, 107, .75);
+      border-radius: 999px;
+      color: #ead7a9;
+      font-size: .88rem;
+      letter-spacing: .12em;
+    }
+    .hero h1 {
+      margin: 1.25rem 0 .75rem;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: .05em;
+      line-height: 1.2;
+    }
+    .hero .lead { max-width: 650px; color: rgba(255, 253, 247, .85); }
+    .hero-note {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      margin-top: 1.25rem;
+      color: #e2e9e4;
+      font-size: .95rem;
+    }
+    .hero-note::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero-card {
+      max-width: 300px;
+      margin: 1rem auto 0;
+      padding: 2rem 1.5rem;
+      border: 1px solid rgba(255, 253, 247, .25);
+      border-radius: 160px 160px 28px 28px;
+      background: rgba(255, 253, 247, .08);
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+    .avatar {
+      display: grid;
+      width: 116px;
+      height: 116px;
+      margin: 0 auto 1.1rem;
+      place-items: center;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      background: rgba(157, 189, 206, .18);
+      color: #f4e7c4;
+      font-size: 2.4rem;
+    }
+    .hero-card .small-label { color: #d9e4dd; font-size: .85rem; letter-spacing: .12em; }
+    .hero-card h2 { margin: .35rem 0; font-size: 1.45rem; font-weight: 700; }
+    .hero-card p { margin: 0; color: rgba(255, 253, 247, .75); font-size: .9rem; }
+    .section-space { padding: 5rem 0; }
+    .section-heading { margin-bottom: 2.5rem; }
+    .section-kicker {
+      color: var(--magic-blue-dark);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .section-heading h2 {
+      margin: .35rem 0 .6rem;
+      color: var(--forest);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+    }
+    .section-heading p { max-width: 680px; margin-bottom: 0; color: var(--muted); }
+    .profile-panel, .resume-card, .skill-panel, .contact-panel {
+      height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 1.2rem;
+      background: var(--paper);
+      box-shadow: 0 12px 35px rgba(38, 60, 53, .055);
+    }
+    .profile-panel { padding: 2rem; }
+    .profile-mark {
+      display: inline-grid;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      place-items: center;
+      border-radius: 14px;
+      background: #e7eef0;
+      color: var(--magic-blue-dark);
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+    .profile-panel h3, .resume-card h3, .skill-panel h3 {
+      color: var(--forest);
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .profile-panel p { margin-bottom: 0; color: var(--muted); }
+    .tag-list { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.25rem; }
+    .tag {
+      padding: .35rem .75rem;
+      border: 1px solid #d8e3e1;
+      border-radius: 999px;
+      background: #f0f5f1;
+      color: var(--forest-light);
+      font-size: .86rem;
+    }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: .5rem;
+      bottom: .5rem;
+      left: .45rem;
+      width: 2px;
+      background: linear-gradient(var(--magic-blue), var(--gold));
+    }
+    .timeline-item { position: relative; margin-bottom: 1.5rem; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: .42rem;
+      left: -1.98rem;
+      width: 13px;
+      height: 13px;
+      border: 3px solid var(--paper);
+      border-radius: 50%;
+      background: var(--magic-blue-dark);
+      box-shadow: 0 0 0 2px var(--magic-blue);
+    }
+    .resume-card { padding: 1.75rem; }
+    .resume-date {
+      display: inline-block;
+      margin-bottom: .6rem;
+      color: var(--magic-blue-dark);
+      font-size: .88rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+    .resume-card p { margin-bottom: .6rem; color: var(--muted); }
+    .resume-card ul { margin-bottom: 0; padding-left: 1.2rem; color: var(--muted); }
+    .resume-card li + li { margin-top: .35rem; }
+    .experience-section { background: #edf1e9; }
+    .skill-panel { padding: 1.75rem; }
+    .skill-row { margin-top: 1.2rem; }
+    .skill-row:first-of-type { margin-top: 1rem; }
+    .skill-label { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: .4rem; font-size: .94rem; font-weight: 700; }
+    .progress { height: 9px; overflow: hidden; border-radius: 999px; background: #e6ebe5; }
+    .progress-bar { border-radius: 999px; background: linear-gradient(90deg, var(--magic-blue-dark), var(--forest-light)); }
+    .skill-note { color: var(--muted); font-size: .9rem; }
+    .quote-panel {
+      padding: 2rem;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 1rem 1rem 0;
+      background: #f0eadd;
+      color: var(--forest);
+      font-size: 1.08rem;
+    }
+    .quote-panel strong { color: var(--magic-blue-dark); }
+    .contact-section {
+      color: var(--paper);
+      background: var(--forest);
+    }
+    .contact-section .section-kicker { color: var(--gold); }
+    .contact-section .section-heading h2 { color: var(--paper); }
+    .contact-section .section-heading p { color: rgba(255, 253, 247, .72); }
+    .contact-panel { padding: 2rem; color: var(--ink); }
+    .contact-line { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .85rem; }
+    .contact-line strong { min-width: 92px; color: var(--forest); }
+    .contact-line span { color: var(--muted); overflow-wrap: anywhere; }
+    .btn-magic {
+      display: inline-block;
+      padding: .8rem 1.25rem;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: var(--gold);
+      color: #26352e;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .btn-magic:hover { transform: translateY(-2px); background: #dfc58f; color: #26352e; }
+    footer { padding: 1.3rem 0; background: #1b2b25; color: rgba(255, 253, 247, .65); text-align: center; font-size: .85rem; }
+    footer span { color: var(--gold); }
+    @media (max-width: 767.98px) {
+      .hero { padding: 5.5rem 0 4.5rem; text-align: center; }
+      .hero .lead { margin-right: auto; margin-left: auto; }
+      .hero-note { justify-content: center; }
+      .hero-card { margin-top: 2.5rem; }
+      .section-space { padding: 3.75rem 0; }
+      .profile-panel, .resume-card, .skill-panel, .contact-panel { padding: 1.4rem; }
+      .timeline { padding-left: 1.65rem; }
+      .timeline-item::before { left: -1.63rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
-
 <body>
-
-    <!-- HERO：書店品牌首頁 -->
-    <div class="row">
-        <div class="col-12 mt-3">
-
-            <header class="store-header">
-
-                <div class="store-topline">
-                    <div class="store-logo">
-                        daily<span>.</span>books
-                    </div>
-
-                    <div class="store-tagline">
-                        INDEPENDENT BOOKSTORE · SINCE 2026
-                    </div>
-                </div>
-
-                <div class="hero-decoration" aria-hidden="true">
-                    ✳
-                </div>
-
-                <div class="hero-content">
-
-                    <div class="hero-label">
-                        HELLO, BOOK LOVERS!
-                    </div>
-
-                    <h1 class="store-title">
-                        日常<span>選書店</span>
-                    </h1>
-
-                    <p class="hero-description">
-                        不是每本書都要讀得很快，<br>
-                        找一本喜歡的書，享受自己的生活節奏。
-                    </p>
-
-                    <a href="#featured-books" class="hero-button">
-                        逛逛我們的選書 →
-                    </a>
-
-                </div>
-
-            </header>
-
-        </div>
-    </div>
-
-
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-
-        <!-- 第一區：故事與文學 -->
-        <section class="section-literature" id="featured-books">
-
-            <h2 class="section-heading">
-                <span class="heading-number">01 / DISCOVER</span>
-                故事，從翻開第一頁開始
-            </h2>
-
-            <div class="section-line"></div>
-
-            <p class="section-description">
-                有些書讓人微笑，有些書讓人重新認識自己。
-                這一區，留給喜歡故事、文字與想像的你。
-            </p>
-
-            <div class="row">
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-1.avif"
-                                class="book-image"
-                                alt="世界文學選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">EDITOR'S PICK</span>
-                            <h3 class="book-title">世界文學</h3>
-                            <p class="book-description">
-                                跟著文字旅行，在別人的故事裡遇見不一樣的自己。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 文學與故事</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-2.avif"
-                                class="book-image"
-                                alt="小說選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">STORY TIME</span>
-                            <h3 class="book-title">小說時光</h3>
-                            <p class="book-description">
-                                找個舒服的午後，讓自己沉浸在另一個世界。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 小說選讀</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-3.avif"
-                                class="book-image"
-                                alt="詩詞選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">SLOW LIVING</span>
-                            <h3 class="book-title">詩與遠方</h3>
-                            <p class="book-description">
-                                慢慢讀幾行詩，替忙碌的生活留下一點空白。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 詩詞與散文</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-4.avif"
-                                class="book-image"
-                                alt="生活散文選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">LITTLE JOY</span>
-                            <h3 class="book-title">生活散文</h3>
-                            <p class="book-description">
-                                把平凡日子讀成詩，發現生活裡的小小美好。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 日常靈感</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- 第二區：風格與靈感 -->
-        <section class="section-history">
-
-            <h2 class="section-heading">
-                <span class="heading-number">02 / GET INSPIRED</span>
-                為生活加一點新靈感
-            </h2>
-
-            <div class="section-line"></div>
-
-            <p class="section-description">
-                不只閱讀，也探索歷史、文化、藝術與思考。
-                讓喜歡的事物，慢慢變成自己的生活風格。
-            </p>
-
-            <div class="row">
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-5.avif"
-                                class="book-image"
-                                alt="歷史選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">TIME TRAVEL</span>
-                            <h3 class="book-title">歷史的另一面</h3>
-                            <p class="book-description">
-                                從過去尋找線索，發現歷史與今天的奇妙連結。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 歷史探索</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-6.avif"
-                                class="book-image"
-                                alt="文化選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">CULTURE CLUB</span>
-                            <h3 class="book-title">文化散步</h3>
-                            <p class="book-description">
-                                從不同地方的故事裡，認識世界多元的樣貌。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 文化旅行</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-7.avif"
-                                class="book-image"
-                                alt="哲學與思考選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">THINK ABOUT IT</span>
-                            <h3 class="book-title">思考練習題</h3>
-                            <p class="book-description">
-                                不急著找到答案，先學會提出更有趣的問題。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 哲學與思考</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-8.avif"
-                                class="book-image"
-                                alt="藝術與設計選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">ART & DESIGN</span>
-                            <h3 class="book-title">美感研究所</h3>
-                            <p class="book-description">
-                                從色彩、設計到藝術，培養自己的美感雷達。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 藝術與設計</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- 第三區：探索與生活 -->
-        <section class="section-discovery">
-
-            <h2 class="section-heading">
-                <span class="heading-number">03 / KEEP EXPLORING</span>
-                好奇心，是最棒的收藏
-            </h2>
-
-            <div class="section-line"></div>
-
-            <p class="section-description">
-                從自然到旅行，從科學到生活提案。
-                讓每一本書，都成為開啟新世界的小小鑰匙。
-            </p>
-
-            <div class="row">
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-9.avif"
-                                class="book-image"
-                                alt="科學知識選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">WOW SCIENCE</span>
-                            <h3 class="book-title">科學好好玩</h3>
-                            <p class="book-description">
-                                帶著好奇心探索世界，發現日常生活中的科學。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 科學探索</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-10.avif"
-                                class="book-image"
-                                alt="自然生態選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">INTO THE WILD</span>
-                            <h3 class="book-title">山海與自然</h3>
-                            <p class="book-description">
-                                讀懂自然的節奏，找回與世界相處的美好方式。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 自然生活</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-11.avif"
-                                class="book-image"
-                                alt="旅行地理選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">GO SOMEWHERE</span>
-                            <h3 class="book-title">下一站，遠方</h3>
-                            <p class="book-description">
-                                出發前先讀一本書，讓旅行多一點故事與想像。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 旅行提案</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
-                    <article class="book-card">
-                        <div class="book-image-wrap">
-                            <img src="./image/book-12.avif"
-                                class="book-image"
-                                alt="生活風格選書"
-                                loading="lazy">
-                        </div>
-                        <div class="book-content">
-                            <span class="book-label">BETTER EVERYDAY</span>
-                            <h3 class="book-title">生活提案</h3>
-                            <p class="book-description">
-                                收集實用靈感，讓生活過得更自在、更有意思。
-                            </p>
-                            <div class="book-bottom">
-                                <span class="book-category"># 生活風格</span>
-                                <span class="book-arrow" aria-hidden="true">↗</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- 書店品牌理念 -->
-        <section class="store-note">
-
-            <h2 class="store-note-title">
-                一本書，一個新世界。🌱
-            </h2>
-
-            <p class="store-note-text">
-                我們相信，閱讀不必有標準答案。<br>
-                喜歡就翻開，感動就停留，讓每一次閱讀都成為自己的小小冒險。
-            </p>
-
-        </section>
-
+      <a class="navbar-brand" href="#home">✦ 個人履歷誌</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#resumeNav" aria-controls="resumeNav" aria-expanded="false" aria-label="切換導覽選單">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="resumeNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#about">個人簡介</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">工作經驗</a></li>
+          <li class="nav-item"><a class="nav-link" href="#learning">學習歷程</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">專業技能</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">聯絡我</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-
-    <!-- FOOTER：書店頁尾 -->
-    <div class="row">
-        <div class="col-12 mt-3">
-
-            <footer class="store-footer">
-
-                <h2 class="footer-logo">
-                    日常選書店 daily.books
-                </h2>
-
-                <p class="footer-text">
-                    READ A LITTLE, DREAM A LOT.
-                </p>
-
-                <nav class="footer-links" aria-label="頁尾導覽">
-                    <a href="#featured-books">本週選書</a>
-                    <a href="#featured-books">文學故事</a>
-                    <a href="#featured-books">生活靈感</a>
-                </nav>
-
-                <p class="footer-text">
-                    不只賣書，也分享生活的各種可能。
-                </p>
-
-                <p class="footer-text">
-                    © 2026 日常選書店. Made with love & books.
-                </p>
-
-            </footer>
-
+  <header class="hero" id="home">
+    <div class="container hero-content">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <span class="eyebrow">MY RESUME · 生活科技應用師</span>
+          <h1>讓科技有溫度，<br>讓生活更有想像。</h1>
+          <p class="lead">我相信科技不只是工具，更是連結人與生活的橋梁。期待結合數位應用、持續學習與溝通能力，將複雜的技術轉化為容易理解、真正實用的生活解方。</p>
+          <div class="hero-note">保持好奇，持續學習，勇於實作。</div>
         </div>
+        <div class="col-lg-4">
+          <div class="hero-card">
+            <div class="avatar" aria-hidden="true">✧</div>
+            <div class="small-label">CANDIDATE PROFILE</div>
+            <h2>【請填入姓名】</h2>
+            <p>應徵職務｜生活科技應用師</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </header>
 
+  <main>
+    <section class="section-space" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">01 · About Me</div>
+          <h2>個人簡介</h2>
+          <p>以使用者需求為起點，讓科技應用不再艱深，讓每一次學習都能累積成實際能力。</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="profile-panel">
+              <div class="profile-mark" aria-hidden="true">✦</div>
+              <h3>關於我</h3>
+              <p>我是一位重視實作、溝通與持續精進的學習者，對生活科技、數位工具與網頁應用抱持高度興趣。面對新工具時，我習慣先理解需求，再拆解問題、逐步測試，並整理成清楚易懂的操作流程。</p>
+              <p class="mt-3">希望投入生活科技應用領域，協助不同背景的使用者善用數位工具，提升工作效率與生活品質；也願意持續學習新技術，將想法轉化為可操作的成果。</p>
+              <div class="tag-list">
+                <span class="tag">數位工具應用</span><span class="tag">問題分析</span><span class="tag">耐心溝通</span><span class="tag">持續學習</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="profile-panel">
+              <div class="profile-mark" aria-hidden="true">⌘</div>
+              <h3>職涯目標</h3>
+              <p>應徵「生活科技應用師」，期望運用數位工具與科技應用能力，協助使用者理解、導入並實際運用科技解決問題。</p>
+              <hr class="my-4" style="border-color: var(--line);">
+              <h3>核心特質</h3>
+              <ul class="mb-0 ps-3" style="color: var(--muted);">
+                <li>能將任務拆解成容易執行的步驟。</li>
+                <li>重視使用者體驗與清楚的說明。</li>
+                <li>願意反覆練習、測試並修正問題。</li>
+                <li>樂於探索新工具並分享學習成果。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <section class="section-space experience-section" id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">02 · Experience</div>
+          <h2>工作經驗</h2>
+          <p>請依實際任職情況修改以下範例；若沒有正式相關工作經驗，也可以改寫為專案、志工或生活中的科技應用經驗。</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="resume-card">
+              <span class="resume-date">【任職年月】—【離職年月／目前】</span>
+              <h3>【公司／機構名稱】｜【職稱】</h3>
+              <p>工作內容與成果（請依真實經歷填寫）</p>
+              <ul>
+                <li>協助處理日常行政、資料整理或跨部門溝通等工作。</li>
+                <li>運用數位工具整理資訊、改善作業流程並提升工作效率。</li>
+                <li>依使用者或同事需求，提供清楚的操作說明與問題協助。</li>
+              </ul>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="resume-card">
+              <span class="resume-date">【任職年月】—【離職年月】</span>
+              <h3>【前一份工作／相關專案】</h3>
+              <p>可放入服務、教學、行政、客戶支援或其他能展現溝通與解決問題能力的經驗。</p>
+              <ul>
+                <li>說明負責的任務、使用的工具，以及如何處理問題。</li>
+                <li>盡量以具體成果呈現，例如完成件數、節省時間或改善的流程。</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section-space" id="learning">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">03 · Learning Journey</div>
+          <h2>學習歷程</h2>
+          <p>把學習變成可以看見的成果，透過練習、製作與修正，逐步建立科技應用能力。</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <article class="resume-card">
+              <span class="resume-date">階段一｜基礎建立</span>
+              <h3>網頁結構與版面設計</h3>
+              <p>學習 HTML、CSS 與 Bootstrap，練習製作個人履歷、資訊展示頁面及響應式表格。</p>
+              <ul>
+                <li>理解 HTML 語意標籤與網頁基本結構。</li>
+                <li>運用 CSS 調整色彩、間距、排版與手機版面。</li>
+                <li>使用 Bootstrap 元件建立一致且易閱讀的介面。</li>
+              </ul>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="resume-card">
+              <span class="resume-date">階段二｜實作應用</span>
+              <h3>程式邏輯與資料應用</h3>
+              <p>透過實際練習理解程式邏輯，並探索資料整理與日常工作流程的數位化。</p>
+              <ul>
+                <li>練習 JavaScript 基礎、事件處理與表單驗證。</li>
+                <li>認識 Google 試算表與 Apps Script 的資料應用方式。</li>
+                <li>練習除錯、閱讀錯誤訊息並逐步驗證修正結果。</li>
+              </ul>
+            </article>
+          </div>
+          <div class="col-12">
+            <div class="quote-panel">
+              <strong>我的學習方法：</strong>先理解需求，再拆解步驟；先完成基本功能，再持續優化使用體驗。每一次除錯，都是更了解科技如何運作的機會。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space experience-section" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">04 · Skills</div>
+          <h2>專業技能</h2>
+          <p>以下為技能展示範例，請依實際熟悉程度調整，避免呈現尚未具備的能力。</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="skill-panel">
+              <h3>數位與科技應用</h3>
+              <div class="skill-row">
+                <div class="skill-label"><span>HTML／網頁結構</span><span>學習中</span></div>
+                <div class="progress" role="progressbar" aria-label="HTML 網頁結構技能示意" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width: 65%"></div></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>CSS／版面設計</span><span>學習中</span></div>
+                <div class="progress" role="progressbar" aria-label="CSS 版面設計技能示意" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width: 60%"></div></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>Bootstrap／響應式設計</span><span>學習中</span></div>
+                <div class="progress" role="progressbar" aria-label="Bootstrap 響應式設計技能示意" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width: 60%"></div></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>數位工具與資料整理</span><span>持續精進</span></div>
+                <div class="progress" role="progressbar" aria-label="數位工具與資料整理技能示意" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width: 65%"></div></div>
+              </div>
+              <p class="skill-note mt-3 mb-0">※ 進度條僅供版面示範，請改成符合實際程度的描述或比例。</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="skill-panel">
+              <h3>工作與溝通能力</h3>
+              <div class="tag-list mt-3">
+                <span class="tag">需求理解</span><span class="tag">耐心教學</span><span class="tag">文件整理</span><span class="tag">問題排查</span><span class="tag">跨工具整合</span><span class="tag">自我學習</span><span class="tag">團隊合作</span><span class="tag">流程改善</span>
+              </div>
+              <hr class="my-4" style="border-color: var(--line);">
+              <h3>應用理念</h3>
+              <p class="skill-note mb-0">科技應用的價值，不只是完成操作，更是讓使用者知道「為什麼這樣做」以及「如何在生活中持續使用」。我希望用清楚的說明與務實的方式，降低科技使用門檻。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">05 · Contact</div>
+          <h2>期待與你交流</h2>
+          <p>希望有機會進一步分享我的學習歷程、實作作品，以及對生活科技應用的想法。</p>
+        </div>
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <div class="contact-line"><strong>姓名</strong><span>【請填入姓名】</span></div>
+            <div class="contact-line"><strong>電子郵件</strong><span>【請填入 Email】</span></div>
+            <div class="contact-line"><strong>電話</strong><span>【請填入聯絡電話】</span></div>
+            <div class="contact-line"><strong>作品集</strong><span>【可填入 GitHub 或作品集網址】</span></div>
+          </div>
+          <div class="col-lg-5 text-lg-end">
+            <a class="btn-magic" href="#home">返回旅程起點 ↑</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">以好奇為起點，以實作累積能力。 <span>✦</span> © 2026 個人履歷誌</div>
+  </footer>
+
+  <!-- Bootstrap Bundle 僅用於導覽列的手機版收合功能 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
