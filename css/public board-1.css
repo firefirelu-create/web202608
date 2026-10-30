@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Iansui&display=swap');
+ *{
+            margin: 0;
+            padding:0;
+        }
+
+body {
+    font-family: "Iansui", cursive;
+
+}
+
+:root{
+    --bg-color1: darkkhaki;
+    --bg-body: cadetblue ;
+    --bg-logo: burlywood;
+    --bg-nav: rgb(19,80,134);
+    --bg-a: rgb(133,189,133);
+    --bg-footer: rgb(2,95,95);
+    --btn001: #da7b0e;
+    --btn002:;
+    --btn001-hover:;
+    --font-body: #0ba38f;
+    --border-1: #7b1acae8;
+
+}
+
+
+.fw-100{
+    font-weight: 100;
+
+}
+.fw-200{
+    font-weight: 200;
+
+}
+.fw-300{
+    font-weight: 300;
+
+}
+.fw-400{
+    font-weight: 400;
+
+}
+.fw-500{
+    font-weight: 500;
+
+}
+.fw-600{
+    font-weight: 600;
+
+}
+.fw-700{
+    font-weight: 700;
+
+}
+.fw-800{
+    font-weight: 800;
+
+}
+.fw-900{
+    font-weight: 900;
+
+}

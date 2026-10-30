@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Iansui&display=swap');
+
+
+/* =========================
+全域設定
+========================= */
+:root {
+    --dark-green: #24382a;
+    --forest-green: #3f5f45;
+    --light-green: #dfe8dc;
+    --cream: #f5f1e8;
+    --brown: #80684f;
+    --text: #354239;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        Arial,
+        sans-serif;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--cream);
+    display: flex;
+    justify-content: center;
+}
+
+/* =========================
+網頁外框
+========================= */
+.wrapper {
+    width: min(1200px, 94%);
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+Banner
+========================= */
+.banner {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background: var(--dark-green);
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to bottom,
+            rgba(20, 35, 25, 0.15),
+            rgba(20, 35, 25, 0.65));
+}
+
+.logo {
+    position: absolute;
+    z-index: 2;
+    top: 30px;
+    left: 40px;
+    color: var(--white);
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 6px;
+}
+
+.logo::before {
+    content: "🌿 ";
+}
+
+/* Banner 標題 */
+.banner::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 80px;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: clamp(40px, 7vw, 72px);
+    font-weight: bold;
+    letter-spacing: 16px;
+    white-space: nowrap;
+    text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================
+導覽列
+========================= */
+nav {
+    background: var(--dark-green);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav li {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+nav a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    background: var(--forest-green);
+    color: #e7d8ad;
+}
+
+/* =========================
+主要內容
+========================= */
+main {
+    padding: 70px 9%;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 65px;
+}
+
+.intro h1 {
+    color: var(--dark-green);
+    font-size: clamp(32px, 5vw, 48px);
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+}
+
+.intro h2 {
+    color: var(--brown);
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.intro p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 17px;
+    color: #59645b;
+}
+
+/* =========================
+內容卡片
+========================= */
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.card {
+    padding: 35px;
+    background: #f8f8f3;
+    border-left: 5px solid var(--forest-green);
+    border-radius: 4px;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+    color: var(--dark-green);
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #4e5a51;
+}
+
+/* =========================
+HIPPO 區塊
+========================= */
+.hippo {
+    grid-column: 1 / -1;
+    background: var(--light-green);
+    border-left-color: var(--brown);
+}
+
+.hippo-list {
+    margin: 20px 0;
+    padding-left: 25px;
+}
+
+.hippo-list li {
+    margin-bottom: 8px;
+}
+
+.hippo-list strong {
+    color: var(--dark-green);
+}
+
+.dilemma {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 6px;
+    color: var(--dark-green);
+    font-weight: bold;
+}
+
+/* =========================
+引言
+========================= */
+.quote {
+    margin: 60px auto 10px;
+    max-width: 850px;
+    text-align: center;
+    color: var(--brown);
+    font-size: 24px;
+    font-style: italic;
+}
+
+/* =========================
+Footer
+========================= */
+footer {
+    padding: 25px;
+    text-align: center;
+    background: var(--dark-green);
+    color: #dbe4d9;
+    font-size: 14px;
+}
+
+/* =========================
+手機版
+========================= */
+@media (max-width: 768px) {
+
+    .wrapper {
+        width: 100%;
+    }
+
+    .banner {
+        height: 300px;
+    }
+
+    .logo {
+        top: 20px;
+        left: 20px;
+        font-size: 20px;
+    }
+
+    .banner::before {
+        bottom: 55px;
+        font-size: 42px;
+        letter-spacing: 8px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        width: 100%;
+    }
+
+    nav a {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    main {
+        padding: 45px 6%;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .hippo {
+        grid-column: auto;
+    }
+
+    .card {
+        padding: 25px;
+    }
+
+    .quote {
+        font-size: 20px;
+    }
+}
