@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Iansui&display=swap');
+
+:root {
+            --erp-primary: #243b5a;
+            --erp-secondary: #355779;
+            --erp-accent: #4779a8;
+
+            --erp-bg: #f2f5f9;
+            --erp-white: #ffffff;
+            --erp-border: #dce3ec;
+
+            --erp-text: #263445;
+            --erp-muted: #778496;
+            --erp-hover: #edf4fb;
+
+            --erp-radius: 10px;
+            --erp-shadow: 0 3px 12px rgba(30, 50, 75, 0.06);
+        }
+
+        /* ========================================
+           CSS：整體頁面
+        ======================================== */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--erp-bg);
+            color: var(--erp-text);
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .erp-page {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 28px 24px 40px;
+        }
+
+        /* ========================================
+           CSS：頁面標題
+        ======================================== */
+        .erp-heading {
+            margin-bottom: 24px;
+        }
+
+        .erp-breadcrumb {
+            margin-bottom: 8px;
+            color: var(--erp-muted);
+            font-size: 13px;
+        }
+
+        .erp-title {
+            margin: 0;
+            color: var(--erp-primary);
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .erp-subtitle {
+            margin-top: 8px;
+            color: var(--erp-muted);
+            font-size: 13px;
+        }
+
+        /* ========================================
+           CSS：報表卡片
+        ======================================== */
+        .erp-panel {
+            overflow: hidden;
+            background: var(--erp-white);
+            border: 1px solid var(--erp-border);
+            border-radius: var(--erp-radius);
+            box-shadow: var(--erp-shadow);
+        }
+
+        .erp-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--erp-border);
+        }
+
+        .erp-panel-title {
+            margin: 0;
+            color: var(--erp-primary);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .erp-panel-description {
+            margin-top: 5px;
+            color: var(--erp-muted);
+            font-size: 12px;
+        }
+
+        .erp-count {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: #edf4fb;
+            color: var(--erp-secondary);
+            border: 1px solid #d8e6f5;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* ========================================
+           CSS：表格
+        ======================================== */
+        .erp-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .erp-table {
+            width: 100%;
+            min-width: 900px;
+            margin-bottom: 0;
+            color: var(--erp-text);
+            vertical-align: middle;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .erp-table thead th {
+            padding: 15px 12px;
+            background: var(--erp-primary);
+            color: var(--erp-white);
+            border: 0;
+            border-bottom: 2px solid var(--erp-accent);
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .erp-table tbody td {
+            padding: 14px 12px;
+            background: var(--erp-white);
+            border-bottom: 1px solid var(--erp-border);
+            font-size: 13px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .erp-table tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .erp-table tbody tr:hover td {
+            background: var(--erp-hover);
+        }
+
+        .erp-table tbody td:first-child {
+            color: var(--erp-primary);
+            font-weight: 600;
+        }
+
+        /* 圖片 */
+        .erp-table td img {
+            display: block;
+            width: 100%;
+            max-width: 180px;
+            height: 105px;
+            object-fit: cover;
+            border: 1px solid var(--erp-border);
+            border-radius: 6px;
+        }
+
+        /* 網站連結 */
+        .erp-table td a {
+            color: var(--erp-accent);
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+
+        .erp-table td a:hover {
+            color: var(--erp-primary);
+            text-decoration: underline;
+        }
+
+        /* 空白資料：顯示佔位符，填入資料後不影響 */
+        .erp-table td span:empty::after {
+            content: "—";
+            color: #a4adba;
+            font-weight: 400;
+        }
+
+        /* ========================================
+           CSS：表格下方資訊
+        ======================================== */
+        .erp-panel-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 13px 20px;
+            background: #fafbfd;
+            border-top: 1px solid var(--erp-border);
+            color: var(--erp-muted);
+            font-size: 12px;
+        }
+
+        /* ========================================
+           CSS：RWD 手機版
+        ======================================== */
+        @media screen and (max-width: 768px) {
+            .erp-page {
+                padding: 18px 12px 28px;
+            }
+
+            .erp-title {
+                font-size: 21px;
+            }
+
+            .erp-panel-header {
+                padding: 15px;
+            }
+
+            .erp-table-wrap {
+                overflow: visible;
+            }
+
+            .erp-table {
+                min-width: 0;
+                border-collapse: separate;
+                border-spacing: 0;
+            }
+
+            .erp-table thead {
+                display: none;
+            }
+
+            .erp-table,
+            .erp-table tbody {
+                display: block;
+                width: 100%;
+            }
+
+            .erp-table tbody tr {
+                display: block;
+                margin: 12px;
+                overflow: hidden;
+                border: 1px solid var(--erp-border);
+                border-radius: 8px;
+                background: var(--erp-white);
+                box-shadow: 0 2px 6px rgba(30, 50, 75, 0.04);
+            }
+
+            .erp-table tbody tr:hover td {
+                background: var(--erp-white);
+            }
+
+            .erp-table tbody td {
+                display: grid;
+                grid-template-columns: minmax(88px, 30%) minmax(0, 1fr);
+                align-items: start;
+                gap: 10px;
+                padding: 12px;
+                border-bottom: 1px solid #edf0f4;
+                overflow-wrap: anywhere;
+            }
+
+            .erp-table tbody td:last-child {
+                border-bottom: 0;
+            }
+
+            .erp-table tbody td::before {
+                content: attr(data-th);
+                display: block;
+                color: var(--erp-muted);
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1.8;
+            }
+
+            .erp-table tbody td span {
+                display: block;
+                width: 100%;
+                min-width: 0;
+                overflow-wrap: anywhere;
+            }
+
+            .erp-table tbody td img {
+                width: 100%;
+                max-width: 220px;
+                height: auto;
+                min-height: 80px;
+                object-fit: cover;
+            }
+
+            .erp-panel-footer {
+                padding: 12px 15px;
+            }
+        }
+
+        /* 窄螢幕再微調 */
+        @media screen and (max-width: 380px) {
+            .erp-table tbody td {
+                grid-template-columns: 82px minmax(0, 1fr);
+                gap: 8px;
+                padding: 10px;
+            }
+        }
+    
