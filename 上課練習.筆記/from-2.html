@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch8.表單forms-js</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <!-- 保留原本的外部 CSS -->
+    <link rel="stylesheet" href="../css/public board-1.css">
+</head>
+
+<body>
+    <div class="container mb-5">
+        <div class="display-4 text-bg-success text-center fw-900 my-4 p-3">補習班課程資料收集</div>
+        <div class=" row justify-content-center">
+            <div class="col-md-8">
+                <div class="mb-3">
+                    <label for="username" class="form-label">姓名</label>
+                    <input type="text" class="form-control form-control-lg" placeholder="姓名字數1~6字。" id="username">
+                    <div class="valid-feedback">姓名輸入符合規定</div>
+                    <div class="invalid-feedback">姓名輸入不符合規定</div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="nickname" class="form-label">暱稱</label>
+                    <input type="text" class="form-control " id="nickname" placeholder="暱稱字數2~8字。">
+                    <div class="valid-feedback">暱稱輸入符合規定</div>
+                    <div class="invalid-feedback">暱稱輸入不符合規定</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">email</label>
+                <input type="email" class="form-control form-control-sm" id="email" placeholder="mail字數5~10字。">
+                <div class="valid-feedback">email輸入符合規定</div>
+                <div class="invalid-feedback">email輸入不符合規定</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="myclass" class="form-label">
+                    最有興趣的課程</label>
+                <input type="text" id="myclass" class="form-control " list="classList"
+                    placeholder="請填入最有興趣的課程,字數2~8字。">
+                <datalist id="classList">
+                    <option value="php"></option>
+                    <option value="java"></option>
+                    <option value="Pyton"></option>
+                    <option value="MySQL"></option>
+                </datalist>
+                <div class="valid-feedback">課程輸入符合規定</div>
+                <div class="invalid-feedback">課程輸入不符合規定</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="classtime" class="form-label">希望的上課時段</label>
+                <select name="" id="classtime" class="form-select form-select-lg">
+                    <option value="" selected disabled class="text-center">---請選擇上課時段---</option>
+                    <option value="平日上午">平日上午</option>
+                    <option value="平日下午">平日下午</option>
+                    <option value="假日上午">假日上午</option>
+                    <option value="假日下午">假日下午</option>
+                    <option value="平日晚上">平日晚上</option>
+                    <option value="假日晚上">假日晚上</option>
+                </select>
+                <div class="valid-feedback">已選擇上課時段!</div>
+                
+            </div>
+
+            <div class="mb-3">
+                    <label for="classcity" class="form-label">希望的上課縣市</label>
+                    <select name="" id="classcity" class="form-select form-select-lg">
+                        <option value="" selected disabled class="text-center">---請選擇上課時段---</option>
+                        <option value="臺中市">臺中市</option>
+                        <option value="臺北市">臺北市</option>
+                        <option value="臺南市">臺南市</option>
+                    </select>
+                    <div class="valid-feedback">已選擇上課縣市!</div>
+                </div>
+
+            <div class="mb-3">
+                <label class="form-label">希望獲得的學習資源(可複選)</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input chk_resource" id="resource01" value="課程講義">
+                    <label for="resource01" class="form-check-label">課程講義</label>
+                </div>
+                 <div class="form-check">
+                    <input type="checkbox" class="form-check-input chk_resource"  id="resource02" value="教學影片">
+                    <label for="resource02" class="form-check-label">教學影片</label>
+                </div>
+                 <div class="form-check">
+                    <input type="checkbox" class="form-check-input chk_resource" id="resource03" value="實作練習">
+                    <label for="resource03" class="form-check-label">實作練習</label>
+                </div>
+                 <div class="form-check">
+                    <input type="checkbox" class="form-check-input chk_resource" id="resource04" value="課程輔導">
+                    <label for="resource04" class="form-check-label">課程輔導</label>
+                </div>
+                <!--自己設計的feedback-->
+                <div id="resource_message" class="text-danger">
+                    至少請選擇一項學習資源
+                </div>
+                    
+                
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">如何知道本補習訊息(可複選)</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input chk_message" id="message01" value="Facebook">
+                    <label for="message01" class="form-check-label">Facebook</label>
+                </div>
+                 <div class="form-check">
+                    <input type="checkbox" class="form-check-input chk_message"  id="message02" value="Instagram">
+                    <label for="message02" class="form-check-label">Instagram</label>
+                </div>
+                 <div class="form-check">
+                    <input type="checkbox" class="form-check-input chk_message" id="message03" value="Google">
+                    <label for="message03" class="form-check-label">Google</label>
+                </div>
+                 <div class="form-check">
+                    <input type="checkbox" class="form-check-input chk_message" id="message04" value="other">
+                    <label for="message04" class="form-check-label">other</label>
+                </div>
+                <!--自己設計的feedback-->
+                <div id="message_message" class="text-danger">
+                    至少請選擇一項訊息來源
+                </div>
+                    
+                
+            </div>
+
+            <div class="mb-4">
+                <label for="form-check">目前的就業狀(單選)</label>
+
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="job01" class="form-check-input radio_job" name="job" value="就業中">
+                    <label for="job01">就業中</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="job02" class="form-check-input radio_job" name="job" value="待業中">
+                    <label for="job02">待業中</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" id="job03" class="form-check-input radio_job" name="job" value="學生">
+                    <label for="job03">學生</label>
+                </div>
+                 <div class="form-check form-check-inline">
+                    <input type="radio" id="job04" class="form-check-input radio_job" name="job" value="other">
+                    <label for="job04">other</label>
+                </div>
+                <div id="job_message" class="text-danger">
+                    請選擇目前就業狀態
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="text-end mt-4">
+                <button class="btn btn-outline-secondary">取消</button>
+                <button class="btn btn-primary" id="ok_btn">確認</button>
+            </div>
+
+
+
+<!-- 課程資料收集確認 -->
+            <div class="col-8 mt-4 bg-secondary">
+                <div class="h1 text-center text-bg-warning py-4 my-4 fw-900">課程資料收集確認</div>
+                <div id="showmessage">
+                    <div class="h4">姓名:</div>
+                    <div class="h4">暱稱:</div>
+                    <div class="h4">email:</div>
+                    <div class="h4">最有興趣的課程:</div>
+                    <div class="h4">希望的上課時段:</div>
+                    <div class="h4">選擇上課縣市:</div>
+                    <div class="h4">希望獲得的學習資源:</div>
+                    <div class="h4">訊息來源:</div>
+                    <div class="h4">就業狀態:</div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            let flag_username = false;
+            let flag_nickname = false;
+            let flag_email = false;
+            let flag_myclass = false;
+            let flag_classtime = false;
+            let flag_classcity = false;
+            let flag_resource = false;
+            let flag_message = false;
+            let flag_job = false;
+
+
+
+            $(function () {
+                //監聽#username
+                $("#username").on("input", function () {
+                    console.log($(this).val().length);
+                    if ($(this).val().length > 0 && $(this).val().length < 7) {
+                        //符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_username = true;
+                    } else {
+                        //不符合規定
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_username = false;
+
+                    }
+                });
+
+
+                //監聽#nickname
+                $("#nickname").on("input", function () {
+
+                    if ($(this).val().length > 1 && $(this).val().length < 9) {
+                        //符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_nickname = true;
+                    } else {
+                        //不符合規定
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_nickname = false;
+
+                    }
+                });
+
+
+
+                //監聽#email
+                $("#email").on("input", function () {
+
+                    if ($(this).val().length > 4 && $(this).val().length < 11) {
+                        //符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_email = true;
+                    } else {
+                        //不符合規定
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_email = false;
+
+                    }
+                });
+
+                //監聽#myclass
+                $("#myclass").on("change", function () {
+
+                    if ($(this).val().length > 2 && $(this).val().length < 11) {
+                        //符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_myclass = true;
+                    } else {
+                        //不符合規定
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_myclass = false;
+
+                    }
+                });
+
+                //監聽 縣市名稱選單select
+            $("#classcity").on("change", function () {
+                if ($(this).val() != "") {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_classcity = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_classcity = false;
+                }
+            });
+
+                //監聽#classtime
+                $("#classtime").on("change", function () {
+
+                    if ($(this).val() != "") {
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_classtime = true;
+                    } else {
+                        //不符合規定
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_classtime = false;
+
+                    }
+                });
+
+                //希望的上課縣巿 select 選單
+                //1.載入縣巿資料
+                $.ajax({
+                    type: "GET",
+                    url: "../web202608/js/CityCountyData.json",
+                    dataType: "json",
+                    success: showdata,
+                    error: function () {
+                        Swal.fire({
+                            title: "資料錯誤",
+                            text: "取後縣巿錯誤,請聯絡管理員!",
+                            icon: "error"
+                        });
+                    }
+                });
+
+
+                //監聽 學習資源 checkbox 複選.長度
+            $(".chk_resource").on("change", function(){
+                console.log($(".chk_resource:checked"));
+                console.log($(".chk_resource:checked").length);
+                if ($(".chk_resource:checked").length > 0) {
+                    $("#resource_message").removeClass("text-danger");
+                    $("#resource_message").addClass("text-success");
+                    $("#resource_message").text("你已選擇一項或以上學習資源");
+                    flag_resource = true;                  
+                } else {
+                    $("#resource_message").removeClass("text-success");
+                    $("#resource_message").addClass("text-danger");
+                    $("#resource_message").text("至少請選擇一項學習資源!");
+                    flag_resource = false;      
+                }
+
+            })
+
+            //監聽 訊息來源checkbox 複選.長度
+            $(".chk_message").on("change", function(){
+                
+                if ($(".chk_message:checked").length > 0) {
+                    $("#message_message").removeClass("text-danger");
+                    $("#message_message").addClass("text-success");
+                    $("#message_message").text("你已選擇一項或以上訊息來源");
+                    flag_message = true;                  
+                } else {
+                    $("#message_message").removeClass("text-success");
+                    $("#message_message").addClass("text-danger");
+                    $("#message_message").text("至少請選擇一項訊息來源!");
+                    flag_message = false;      
+                }
+
+            })
+
+            //監聽 就業狀態 radio 單選.長度
+            $(".radio_job").on("change", function(){
+               
+                if ($(".radio_job:checked").length > 0) {
+                    $("#job_message").removeClass("text-danger");
+                    $("#job_message").addClass("text-success");
+                    $("#job_message").text("已選擇就業狀態");
+                    flag_job = true;                  
+                } else {
+                    $("#job_message").removeClass("text-success");
+                    $("#job_message").addClass("text-danger");
+                    $("#job_message").text("未選擇就業狀態!");
+                    flag_job = false;      
+                }
+
+            })
+
+                //監聽ok_btn
+                $("#ok_btn").on("click", function () {
+                    if (flag_username && flag_nickname && flag_email && flag_myclass && flag_classtime && flag_classcity && flag_resource && flag_message && flag_job) {
+                        console.log("ok_btn");
+                        const username = $("#username").val();
+                        const nickname = $("#nickname").val();
+                        const email = $("#email").val();                        
+                        const myclass = $("#myclass").val();
+                        const classtime = $("#classtime").val();
+                        const classcity = $("#classcity").val();
+                        
+                        //取得希望的學習資源checkbox的勾選資料
+                        let resource = []; //收集勾選資料
+                        $(".chk_resource:checked").each(function (){
+                            resource.push($(this).val());
+                        });
+                        console.log(resource);
+
+                        //取得如何知道本補習訊息checkbox的勾選資料
+                         let message = []; //收集勾選資料
+                        $(".chk_message:checked").each(function (){
+                            message.push($(this).val());
+                        });
+                        console.log(message);
+
+                        //取得目前就業狀態
+                        const job = $("input[name='job']:checked").val();
+
+                        let strHTML = `
+                            <div class="h4">姓名: ${username}</div>
+                            <div class="h4">暱稱: ${nickname}</div>
+                            <div class="h4">email: ${email}</div>
+                            <div class="h4">最有興趣的課程: ${myclass}</div>
+                             <div class="h4">課程時段: ${classtime}</div>
+                             <div class="h4">希望的上課縣市: ${classcity}</div>
+                             <div class="h4">希望獲得的學習資源: ${resource.join(" ,")}</div>
+                             <div class="h4">訊息來源: ${message.join(" ,")}</div>
+                             <div class="h4">就業狀態: ${job}</div>
+                            `;
+
+                        $("#showmessage").html(strHTML);
+
+                    } else {
+                        Swal.fire({
+                            title: "欄位有錯誤",
+                            text: "欄位有錯誤,請修正!",
+                            icon: "error"
+                        });
+                    }
+                });
+
+            });
+
+            
+            
+
+            //副程式 or 自訂函式
+            function showdata(data) {
+                console.log(data);
+
+                $("#classcity").empty();
+                 $("#classcity").append(`<option value="" selected disabled class="text-center">---請選擇上課時段---</option>
+                 `);
+                data.forEach(function(item){
+                    console.log(item.CityName);
+
+                    const strHtml= `<option value="${item.CityName}">${item.CityName}</option>`;
+                    $("#classcity").append(strHtml);
+                });
+            }
+        </script>
+
+</body>
+
+</html>

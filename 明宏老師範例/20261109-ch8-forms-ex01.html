@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch8. 表單 Forms - 補習班課程資料收集</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <div class="container mb-5">
+        <div class="display-4 text-bg-success text-center fw-900 my-4 p-3">XX補習班課程資料收集</div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="mb-3">
+                    <label for="username" class="form-label">姓名</label>
+                    <input type="text" class="form-control form-control-lg" placeholder="姓名字數1~6字。" id="username">
+                    <div class="valid-feedback">姓名符合規定</div>
+                    <div class="invalid-feedback">姓名不符合規定</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nickname" class="form-label">暱稱</label>
+                    <input type="text" class="form-control form-control-lg" id="nickname" placeholder="請填入暱稱，字數2~8個。">
+                    <div class="valid-feedback">暱稱符合規定</div>
+                    <div class="invalid-feedback">暱稱不符合規定</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="請填入email，字數5~10個。">
+                    <div class="valid-feedback">email符合規定</div>
+                    <div class="invalid-feedback">email不符合規定</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="myclass" class="form-label">最有興趣的課程</label>
+                    <input type="text" id="myclass" class="form-control form-control-lg" list="classList"
+                        placeholder="請填入最有興趣的課程，字數2~8個。">
+                    <datalist id="classList">
+                        <option value="PHP"></option>
+                        <option value="JavaScript"></option>
+                        <option value="Python"></option>
+                        <option value="MySQL"></option>
+                    </datalist>
+                    <div class="valid-feedback">課程符合規定</div>
+                    <div class="invalid-feedback">課程不符合規定</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="classtime" class="form-label">希望的上課時段</label>
+                    <select name="" id="classtime" class="form-select form-select-lg">
+                        <option value="" selected disabled class="text-center">---請選擇上課時段---</option>
+                        <option value="平日上午">平日上午</option>
+                        <option value="平日下午">平日下午</option>
+                        <option value="平日晚上">平日晚上</option>
+                        <option value="假日上午">假日上午</option>
+                        <option value="假日晚上">假日晚上</option>
+                    </select>
+                    <div class="valid-feedback">已選擇上課時段!</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="classcity" class="form-label">希望的上課縣市</label>
+                    <select name="" id="classcity" class="form-select form-select-lg">
+                        <option value="" selected disabled class="text-center">---請選擇縣市---</option>
+                    </select>
+                    <div class="valid-feedback">已選擇上課縣市!</div>
+                </div>
+
+
+                
+                <div class="text-end mt-4">
+                    <button class="btn btn-outline-secondary">取消</button>
+                    <button class="btn btn-primary" id="ok_btn">確認</button>
+                </div>
+            </div>
+
+            <!-- 課程資料收集確認 -->
+            <div class="col-md-8 mt-4 bg-secondary">
+                <div class="h1 text-center text-bg-warning py-4 my-4 fw-900">課程資料收集確認</div>
+                <div id="showmessage">
+                    <div class="h2">姓名: xxx</div>
+                    <div class="h2">暱稱: xxx</div>
+                    <div class="h2">Email: xxx</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let flag_username = false;
+        let flag_ncikname = false;
+        let flag_email = false;
+        let flag_myclass = false;
+        let flag_classtime = false;
+        let flag_classcity = false;
+        $(function () {
+            //監聽 #username
+            $("#username").on("input", function () {
+                console.log($(this).val().length);
+                if ($(this).val().length > 0 && $(this).val().length < 7) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_username = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_username = false;
+                }
+            });
+
+            //監聽 #nickname
+            $("#nickname").on("input", function () {
+                if ($(this).val().length > 1 && $(this).val().length < 9) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_ncikname = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_ncikname = false;
+                }
+            });
+
+            //監聽 #Email
+            $("#email").on("input", function () {
+                if ($(this).val().length > 4 && $(this).val().length < 11) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_email = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_email = false;
+                }
+            });
+
+            //監聽 #myclass
+            $("#myclass").on("change", function () {
+                if ($(this).val().length > 1 && $(this).val().length < 9) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_myclass = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_myclass = false;
+                }
+            });
+
+            //監聽 #classtime
+            $("#classtime").on("change", function () {
+                if ($(this).val() != "") {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_classtime = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_classtime = false;
+                }
+            });
+
+            //希望的上課縣市 select 選單
+            //1. 載入縣市資料
+            $.ajax({
+                type: "GET",
+                url: "js/CityCountyData.json",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    Swal.fire({
+                        title: "資料錯誤!",
+                        text: "取得縣市資料錯誤，請聯絡管理員!",
+                        icon: "error"
+                    });
+                }
+            });
+
+            //監聽 縣市名稱選單select
+            $("#classcity").on("change", function () {
+                if ($(this).val() != "") {
+                    $(this).addClass("is-valid");
+                    flag_classcity = true;
+                }
+            });
+
+
+            //監聽#ok_btn
+            $("#ok_btn").on("click", function () {
+                if (flag_username && flag_ncikname && flag_email && flag_myclass && flag_classtime && flag_classcity) {
+                    console.log("ok-btn");
+                    const username = $("#username").val();
+                    const nickname = $("#nickname").val();
+                    const email = $("#email").val();
+                    const myclass = $("#myclass").val();
+                    const classtime = $("#classtime").val();
+                    const classcity = $("#classcity").val();
+
+                    let strHTML = `<div class="h2">姓名: ${username}</div>
+                                    <div class="h2">暱稱: ${nickname}</div>
+                                    <div class="h2">Email: ${email}</div>
+                                    <div class="h2">最有興趣的課程: ${myclass}</div>
+                                    <div class="h2">希望的上課時段: ${classtime}</div>
+                                    <div class="h2">希望的上課縣市: ${classcity}</div>`;
+                    $("#showmessage").html(strHTML);
+                } else {
+                    // alert("欄位有錯誤，請修正!");
+                    Swal.fire({
+                        title: "欄位有錯誤!",
+                        text: "欄位有錯誤，請修正!",
+                        icon: "error"
+                    });
+                }
+
+            });
+
+        });
+
+        //副程式 or 自訂函式
+        function showdata(data) {
+            console.log(data);
+
+            $("#classcity").empty();
+            $("#classcity").append(`<option value="" selected disabled class="text-center">---請選擇縣市---</option>`);
+            data.forEach(function (item) {
+                console.log(item.CityName);
+                const strHTML = `<option value="${item.CityName}">${item.CityName}</option>`;
+                $("#classcity").append(strHTML);
+            });
+        }
+    </script>
+</body>
+
+</html>
