@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>政府資料開放平臺 啟動器 & API 預覽器</title>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --primary: #0f62fe;
+      --primary-hover: #0353e9;
+      --text: #161616;
+      --muted: #525252;
+      --border: #e0e0e0;
+      --radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .badge {
+      background: #e8f1ff;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-align: center;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .api-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .api-box h2 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .api-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    input[type="url"] {
+      flex: 1;
+      min-width: 240px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    pre {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      max-height: 320px;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>政府資料開放平臺 快速啟動器</h1>
+        <small style="color: var(--muted);">單一 HTML 開發模板 · 支援直接開啟平臺與 JSON API 測試</small>
+      </div>
+      <span class="badge" id="clock">載入中...</span>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <div>
+          <h2>政府資料開放平臺（中央）</h2>
+          <p>數位發展部維運，彙整全國各部會與地方政府之天氣、交通、統計與實價登錄資料集。</p>
+        </div>
+        <a class="btn" href="https://data.gov.tw" target="_blank" rel="noopener noreferrer">開啟 data.gov.tw ↗</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <h2>臺中市政府資料開放平臺</h2>
+          <p>提供臺中市公共資訊、交通運輸、生活安全、環境品質與在地空間圖資 API。</p>
+        </div>
+        <a class="btn" href="https://taichung.gov.tw" target="_blank" rel="noopener noreferrer">開啟臺中開放資料 ↗</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <h2>政府資料開放平臺 Open API</h2>
+          <p>直接透過程式或瀏覽器查詢平臺資料集目錄與詮釋資料（Metadata）介面。</p>
+        </div>
+        <a class="btn" href="https://data.gov.twopenapi" target="_blank" rel="noopener noreferrer">檢視 Open API 說明 ↗</a>
+      </div>
+    </section>
+
+    <section class="api-box">
+      <h2>即時 JSON / Open API 資料測試區</h2>
+      <p>貼上支援 CORS 的政府開放資料 JSON 網址，直接在下方預覽回傳內容（若遇跨域限制可透過瀏覽器直接開啟連結）。</p>
+      <div class="input-group">
+        <input
+          type="url"
+          id="apiUrl"
+          placeholder="請輸入開放資料 JSON API 網址 (例如 https://...)"
+          value="https://typicode.com"
+        />
+        <button class="btn" id="fetchBtn">抓取資料</button>
+        <button class="btn" id="openNewTabBtn" style="background:#393939;">新分頁開啟網址</button>
+      </div>
+      <pre id="output">// 點擊「抓取資料」後，結果將顯示於此處...</pre>
+    </section>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("clock").textContent = now.toLocaleString("zh-TW", {
+        hour12: false
+      });
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    const apiUrlInput = document.getElementById("apiUrl");
+    const outputEl = document.getElementById("output");
+
+    document.getElementById("fetchBtn").addEventListener("click", async () => {
+      const url = apiUrlInput.value.trim();
+      if (!url) {
+        outputEl.textContent = "請先輸入有效的網址。";
+        return;
+      }
+
+      outputEl.textContent = "資料載入中...";
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP 狀態碼: ${res.status}`);
+        const contentType = res.headers.get("content-type") || "";
+        if (contentType.includes("application/json")) {
+          const data = await res.json();
+          outputEl.textContent = JSON.stringify(data, null, 2);
+        } else {
+          const text = await res.text();
+          outputEl.textContent = text.slice(0, 3000) + (text.length > 3000 ? "\n...（內容過長已截斷）" : "");
+        }
+      } catch (err) {
+        outputEl.textContent = `讀取失敗：${err.message}\n\n提示：部分政府 API 未開放瀏覽器跨域 (CORS) 存取，請改用「新分頁開啟網址」或透過後端/Python 代理呼叫。`;
+      }
+    });
+
+    document.getElementById("openNewTabBtn").addEventListener("click", () => {
+      const url = apiUrlInput.value.trim();
+      if (url) window.open(url, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</body>
+</html>

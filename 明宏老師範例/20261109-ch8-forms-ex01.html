@@ -66,20 +66,118 @@
                     <label for="classcity" class="form-label">希望的上課縣市</label>
                     <select name="" id="classcity" class="form-select form-select-lg">
                         <option value="" selected disabled class="text-center">---請選擇縣市---</option>
+                        <option value="臺中市">臺中市</option>
+                        <option value="臺北市">臺北市</option>
+                        <option value="臺南市">臺南市</option>
                     </select>
                     <div class="valid-feedback">已選擇上課縣市!</div>
                 </div>
 
+                <div class="mb-3">
+                    <label class="form-label">希望獲得的學習資源(可複選)</label>
 
-                
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input chk_resource" id="resource01" value="課程講義">
+                        <label for="resource01" class="form-check-label">課程講義</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input chk_resource" id="resource02" value="教學影片">
+                        <label for="resource02" class="form-check-label">教學影片</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input chk_resource" id="resource03" value="實作練習">
+                        <label for="resource03" class="form-check-label">實作練習</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input chk_resource" id="resource04" value="課後輔導">
+                        <label for="resource04" class="form-check-label">課後輔導</label>
+                    </div>
+
+                    <!-- 自己設計的feedback -->
+                    <div id="resource_message" class="text-danger">
+                        至少請選擇一項學習資源
+                    </div>
+                </div>
+
+                <!-- checkbox練習
+                如何知道本補習訊息(可複選)? 1. Facebook 2.Instagram 3.Google搜尋 -->
+                <div class="mb-3">
+                    <label class="form-label">如何知道本補習訊息(可複選)?</label>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input chk_resourcenews" id="resourcenews01"
+                            value="Facebook">
+                        <label for="resourcenews01" class="form-check-label">Facebook</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input chk_resourcenews" id="resourcenews02"
+                            value="Instagram">
+                        <label for="resourcenews02" class="form-check-label">Instagram</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input chk_resourcenews" id="resourcenews03"
+                            value="Google搜尋">
+                        <label for="resourcenews03" class="form-check-label">Google搜尋</label>
+                    </div>
+
+                    <!-- 自己設計的feedback -->
+                    <div id="resourcenews_message" class="text-danger">
+                        至少請選擇一項本補習訊息來源
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <h6>目前的就業狀態(單選)</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="job01" class="form-check-input radio_job" value="在職中" name="job">
+                        <label for="job01">在職中</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="job02" class="form-check-input radio_job" value="待業中" name="job">
+                        <label for="job02">待業中</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="job03" class="form-check-input radio_job" value="學生" name="job">
+                        <label for="job03">學生</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="job04" class="form-check-input radio_job" value="其它" name="job">
+                        <label for="job04">其它</label>
+                    </div>
+
+                    <div class="text-danger" id="job_message">請選擇目前的就業狀態</div>
+                </div>
+
+                <!-- switch -->
+                <div class="mb-3">
+                    <label for="">是否願意接收到最新課程與優惠通知?</label>
+                    <div class="form-check form-switch">
+                        <input type="checkbox" class="form-check-input" id="news_switch">
+                        <label for="news_switch" class="form-check-label">不願意</label>
+                    </div>
+                </div>
+
+                <!-- range -->
+                <div class="mb-3">
+                    <label for="">每周預計投入的學習時數:
+                        <span class="text-primary fw-bold h4" id="study_range_text">5</span>
+                        小時</label>
+                    <input type="range" id="study_range" class="form-range" min="1" max="20" step="1" value="5">
+                    <div class="d-flex justify-content-between">
+                        <span class="h5 fw-bold text-primary">1</span>
+                        <span class="h5 fw-bold text-primary">20</span>
+                    </div>
+                </div>
+
                 <div class="text-end mt-4">
-                    <button class="btn btn-outline-secondary">取消</button>
+                    <button class="btn btn-outline-secondary" id="cancel_btn">取消</button>
                     <button class="btn btn-primary" id="ok_btn">確認</button>
                 </div>
             </div>
 
             <!-- 課程資料收集確認 -->
-            <div class="col-md-8 mt-4 bg-secondary">
+            <div class="col-md-8 mt-4 bg-secondary d-none" id="message">
                 <div class="h1 text-center text-bg-warning py-4 my-4 fw-900">課程資料收集確認</div>
                 <div id="showmessage">
                     <div class="h2">姓名: xxx</div>
@@ -87,6 +185,8 @@
                     <div class="h2">Email: xxx</div>
                 </div>
             </div>
+
+
         </div>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -99,6 +199,9 @@
         let flag_myclass = false;
         let flag_classtime = false;
         let flag_classcity = false;
+        let flag_resource = false;
+        let flag_resourcenews = false;
+        let flag_job = false;
         $(function () {
             //監聽 #username
             $("#username").on("input", function () {
@@ -193,15 +296,84 @@
             //監聽 縣市名稱選單select
             $("#classcity").on("change", function () {
                 if ($(this).val() != "") {
+                    $(this).removeClass("is-invalid");
                     $(this).addClass("is-valid");
                     flag_classcity = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_classcity = false;
                 }
             });
 
+            //監聽 希望獲得的學習資源(可複選) checkbox
+            $(".chk_resource").on("change", function () {
+                console.log($(".chk_resource:checked"));
+                console.log($(".chk_resource:checked").length);
+                if ($(".chk_resource:checked").length > 0) {
+                    $("#resource_message").removeClass("text-danger");
+                    $("#resource_message").addClass("text-success");
+                    $("#resource_message").text("你已選擇一項或以上學習資源!");
+                    flag_resource = true;
+                } else {
+                    $("#resource_message").removeClass("text-success");
+                    $("#resource_message").addClass("text-danger");
+                    $("#resource_message").text("至少請選擇一項學習資源!");
+                    flag_resource = false;
+                }
+            });
+
+            //監聽 如何知道本補習訊息(可複選) checkbox
+            $(".chk_resourcenews").on("change", function () {
+                if ($(".chk_resourcenews:checked").length > 0) {
+                    $("#resourcenews_message").removeClass("text-danger");
+                    $("#resourcenews_message").addClass("text-success");
+                    $("#resourcenews_message").text("你已選擇一項補習訊息來源!");
+                    flag_resourcenews = true;
+                } else {
+                    $("#resourcenews_message").removeClass("text-success");
+                    $("#resourcenews_message").addClass("text-danger");
+                    $("#resourcenews_message").text("至少請選擇一項補習訊息來源!");
+                    flag_resourcenews = false;
+                }
+            });
+
+            //監聽 目前的就業狀態(單選) .radio_job
+            $(".radio_job").on("change", function () {
+                if ($(".radio_job:checked").length > 0) {
+                    $("#job_message").removeClass("text-danger");
+                    $("#job_message").addClass("text-success");
+                    $("#job_message").text("你已選擇目前的就業狀態!");
+                    flag_job = true;
+                } else {
+                    $("#job_message").removeClass("text-success");
+                    $("#job_message").addClass("text-danger");
+                    $("#job_message").text("未選擇目前的就業狀態!");
+                    flag_job = false;
+                }
+            });
+
+            //監聽 switch #news_switch
+            $("#news_switch").on("change", function () {
+                if ($(this).is(":checked")) {
+                    $(this).next("label").text("願意");
+                } else {
+                    $(this).next("label").text("不願意");
+                }
+            });
+
+            //監聽 study_range
+            $("#study_range").on("input", function () {
+                console.log($(this).val());
+                $("#study_range_text").text($(this).val());
+            });
 
             //監聽#ok_btn
             $("#ok_btn").on("click", function () {
-                if (flag_username && flag_ncikname && flag_email && flag_myclass && flag_classtime && flag_classcity) {
+                if (flag_username && flag_ncikname && flag_email && flag_myclass && flag_classtime && flag_classcity && flag_resource && flag_resourcenews && flag_job) {
+
+                    $("#message").removeClass("d-none");
+
                     console.log("ok-btn");
                     const username = $("#username").val();
                     const nickname = $("#nickname").val();
@@ -210,12 +382,40 @@
                     const classtime = $("#classtime").val();
                     const classcity = $("#classcity").val();
 
+                    //取得 希望獲得的學習資源(可複選) checkbox的勾選資料
+                    let resource = []; //收集勾選資料
+                    $(".chk_resource:checked").each(function () {
+                        resource.push($(this).val());
+                    });
+                    console.log(resource);
+
+                    //取得 如何知道本補習訊息(可複選) checkbox的勾選資料
+                    let resourcenews = []; //收集勾選資料
+                    $(".chk_resourcenews:checked").each(function () {
+                        resourcenews.push($(this).val());
+                    });
+                    console.log(resourcenews);
+
+                    //取得目前就業狀態
+                    const job = $(".radio_job:checked").val();
+
+                    //是否願意接收到最新課程與優惠通知? 三元運算子
+                    const news = $("#news_switch").is(":checked") ? "願意" : "不願意";
+
+                    //每周預計投入的學習時數 強制轉換成數字Number()
+                    const study_range = Number($("#study_range").val());
+
                     let strHTML = `<div class="h2">姓名: ${username}</div>
                                     <div class="h2">暱稱: ${nickname}</div>
                                     <div class="h2">Email: ${email}</div>
                                     <div class="h2">最有興趣的課程: ${myclass}</div>
                                     <div class="h2">希望的上課時段: ${classtime}</div>
-                                    <div class="h2">希望的上課縣市: ${classcity}</div>`;
+                                    <div class="h2">希望的上課縣市: ${classcity}</div>
+                                    <div class="h2">希望獲得的學習資源: ${resource.join(", ")}</div>
+                                    <div class="h2">如何知道本補習訊息: ${resourcenews.join(", ")}</div>
+                                    <div class="h2">目前就業狀態: ${job}</div>
+                                    <div class="h2">是否願意接收到通知: ${news}</div>
+                                    <div class="h2">每周預計投入的學習時數: ${study_range}</div>`;
                     $("#showmessage").html(strHTML);
                 } else {
                     // alert("欄位有錯誤，請修正!");
@@ -227,6 +427,60 @@
                 }
 
             });
+
+            //監聽 #cancel_btn
+            $("#cancel_btn").on("click", function () {
+                //清空文字輸入欄位
+                $("#username").val("");
+                $("#nickname").val("");
+                $("#email").val("");
+                $("#myclass").val("");
+
+                //清空select
+                $("#classtime").val("");
+                $("#classcity").val("");
+
+                //清空checkbox
+                $(".chk_resource").prop("checked", false);
+                $(".chk_resourcenews").prop("checked", false);
+
+                //radio
+                $(".radio_job").prop("checked", false);
+
+                //還原switch
+                $("#news_switch").prop("checked", false);
+                $("#news_switch").next("label").text("不願意");
+
+                //還原range
+                $("#study_range").val(5);
+                $("#study_range_text").text(5);
+
+                //移除表單驗證樣式
+                $(".is-valid").removeClass("is-valid");
+                $(".is-invalid").removeClass("is-invalid");
+
+                //還原checkbox and radio提示詞
+                $("#resource_message").removeClass("text-success").addClass("text-danger").text("至少請選擇一項學習資源");
+
+                $("#resourcenews_message").removeClass("text-success").addClass("text-danger").text("至少請選擇一項本補習訊息來源");
+
+                $("#job_message").removeClass("text-success").addClass("text-danger").text("請選擇目前的就業狀態");
+
+                // 重設所有的flag
+                flag_username = false;
+                flag_ncikname = false;
+                flag_email = false;
+                flag_myclass = false;
+                flag_classtime = false;
+                flag_classcity = false;
+                flag_resource = false;
+                flag_resourcenews = false;
+                flag_job = false;
+
+                //隱藏關閉 課程資料收集確認 #message
+                $("#message").addClass("d-none");
+                $("#showmessage").empty();
+            })
 
         });
 

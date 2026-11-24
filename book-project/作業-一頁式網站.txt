@@ -1,0 +1,9 @@
+明宏tr-一頁式網站:日常書店
+=figma:第二個專案
+=作品集:project 01 如山一般的思考> job4 走讀書林
+=專題報告99h>每星期三
+
+github>web202608>project 03
+檔名:dailyBook.html
+
+12section

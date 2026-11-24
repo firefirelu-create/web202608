@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>日常選書店｜READ A LITTLE, DREAM A LOT</title>
+
+    <!-- Bootstrap 5.2.3 -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+
+    <style>
+        /* CSS:GENERAL-START */
+        :root {
+            --orange: #f47745;
+            --yellow: #f7ca62;
+            --green: #668b68;
+            --blue: #8bc5d6;
+            --pink: #ef9c9c;
+            --cream: #fff8ed;
+            --paper: #fffdf8;
+            --dark: #303c32;
+            --muted: #77766d;
+            --line: #e9dfd0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--dark);
+            background-color: var(--cream);
+            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1320px;
+        }
+
+        .section-block {
+            padding-top: 60px;
+        }
+
+        /* CSS:GENERAL-END */
+
+
+        /* CSS:NAV-AND-HERO-START */
+        .store-header {
+            position: relative;
+            overflow: hidden;
+            margin: 16px 16px 0;
+            padding: 25px 20px 60px;
+            background-color: #f6d9b8;
+            border-radius: 28px;
+        }
+
+        .store-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto 45px;
+        }
+
+        .store-logo {
+            color: var(--dark);
+            font-size: 23px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .store-logo span {
+            color: var(--orange);
+        }
+
+        .top-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .top-nav a {
+            color: var(--dark);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .top-nav a:hover {
+            color: var(--orange);
+        }
+
+        .store-tagline {
+            color: #675b4b;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 17px;
+            color: white;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background-color: var(--green);
+            border-radius: 30px;
+        }
+
+        .store-title {
+            margin: 0;
+            font-size: clamp(38px, 7vw, 76px);
+            font-weight: 900;
+            letter-spacing: 5px;
+            line-height: 1.3;
+        }
+
+        .store-title span {
+            color: var(--orange);
+        }
+
+        .hero-description {
+            margin-top: 18px;
+            margin-bottom: 28px;
+            color: #5f584d;
+            font-size: clamp(14px, 2vw, 17px);
+            line-height: 2;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 13px 28px;
+            color: white;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            background-color: var(--dark);
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero-button:hover {
+            color: white;
+            background-color: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        .hero-button-outline {
+            display: inline-block;
+            padding: 13px 24px;
+            color: var(--dark);
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            background-color: rgba(255, 253, 248, 0.75);
+            border: 1px solid rgba(48, 60, 50, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-button-outline:hover {
+            color: var(--dark);
+            background-color: var(--paper);
+            transform: translateY(-3px);
+        }
+
+        .hero-decoration {
+            position: absolute;
+            top: 90px;
+            right: 5%;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: clamp(60px, 12vw, 150px);
+            transform: rotate(12deg);
+            pointer-events: none;
+        }
+
+        /* CSS:NAV-AND-HERO-END */
+
+
+        /* CSS:SECTION-HEADING-START */
+        .section-heading {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: clamp(23px, 3vw, 32px);
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .section-heading .heading-number {
+            color: var(--orange);
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .section-description {
+            margin-bottom: 22px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .section-line {
+            width: 55px;
+            height: 5px;
+            margin-top: 12px;
+            margin-bottom: 18px;
+            background-color: var(--yellow);
+            border-radius: 10px;
+        }
+
+        /* CSS:SECTION-HEADING-END */
+
+
+        /* CSS:BOOK-CARD-START */
+        .book-card {
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(65, 54, 38, 0.13);
+        }
+
+        .book-image-wrap {
+            position: relative;
+            overflow: hidden;
+            background-color: #eee7dc;
+        }
+
+        .book-image {
+            display: block;
+            width: 100%;
+            height: 245px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .book-card:hover .book-image {
+            transform: scale(1.05);
+        }
+
+        .book-content {
+            padding: 18px;
+        }
+
+        .book-label {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 5px 10px;
+            color: #594d3d;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background-color: #f7e7b8;
+            border-radius: 4px;
+        }
+
+        .book-title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 900;
+            line-height: 1.5;
+        }
+
+        .book-description {
+            margin-bottom: 17px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .book-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 1px solid var(--line);
+        }
+
+        .book-category {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .book-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            color: white;
+            font-size: 17px;
+            background-color: var(--orange);
+            border-radius: 50%;
+        }
+
+        /* CSS:BOOK-CARD-END */
+
+
+        /* CSS:EXHIBITION-AND-CURATOR-START */
+        .exhibition-box {
+            padding: 32px;
+            background-color: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+        }
+
+        .exhibition-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            margin-bottom: 14px;
+            color: var(--dark);
+            font-size: 12px;
+            font-weight: 800;
+            background-color: var(--yellow);
+            border-radius: 20px;
+        }
+
+        .exhibition-title {
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 900;
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        .exhibition-list {
+            padding-left: 18px;
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .exhibition-visual {
+            height: 100%;
+            min-height: 240px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #e9f1f3;
+            border-radius: 16px;
+        }
+
+        .curator-card {
+            padding: 32px;
+            background-color: #f9efe1;
+            border-left: 6px solid var(--orange);
+            border-radius: 16px;
+        }
+
+        .curator-quote {
+            font-size: clamp(17px, 2.2vw, 22px);
+            font-weight: 800;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .curator-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* CSS:EXHIBITION-AND-CURATOR-END */
+
+
+        /* CSS:SPACE-EVENTS-REVIEWS-START */
+        .feature-card {
+            height: 100%;
+            padding: 24px;
+            background-color: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+        }
+
+        .feature-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            margin-bottom: 14px;
+            font-size: 20px;
+            background-color: #f7e7b8;
+            border-radius: 12px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .feature-text {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 20px 24px;
+            margin-bottom: 14px;
+            background-color: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .event-item:hover {
+            border-color: var(--orange);
+        }
+
+        .event-date {
+            min-width: 110px;
+            padding: 8px 14px;
+            color: white;
+            font-size: 13px;
+            font-weight: 800;
+            text-align: center;
+            background-color: var(--green);
+            border-radius: 8px;
+        }
+
+        .event-info {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .event-title {
+            font-size: 17px;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+
+        .event-desc {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .event-tag {
+            padding: 6px 12px;
+            color: var(--dark);
+            font-size: 12px;
+            font-weight: 800;
+            background-color: #f7e7b8;
+            border-radius: 20px;
+        }
+
+        .review-card {
+            height: 100%;
+            padding: 24px;
+            border-radius: 16px;
+        }
+
+        .review-card.tone-green {
+            background-color: #e4eddd;
+        }
+
+        .review-card.tone-pink {
+            background-color: #fbe7e7;
+        }
+
+        .review-card.tone-blue {
+            background-color: #e4f1f5;
+        }
+
+        .review-text {
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 14px;
+        }
+
+        .review-author {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        /* CSS:SPACE-EVENTS-REVIEWS-END */
+
+
+        /* CSS:FAQ-AND-NOTE-START */
+        .faq-item {
+            margin-bottom: 12px;
+            padding: 18px 22px;
+            background-color: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+        }
+
+        .faq-item summary {
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: "+";
+            color: var(--orange);
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .faq-item[open] summary::after {
+            content: "−";
+        }
+
+        .faq-answer {
+            margin-top: 12px;
+            margin-bottom: 0;
+            padding-top: 12px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+            border-top: 1px solid var(--line);
+        }
+
+        .store-note {
+            padding: 38px 28px;
+            background-color: #e4eddd;
+            border-radius: 22px;
+        }
+
+        .store-note-title {
+            margin-bottom: 12px;
+            font-size: clamp(22px, 4vw, 30px);
+            font-weight: 900;
+        }
+
+        .store-note-text {
+            margin-bottom: 20px;
+            color: #556352;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 11px 16px;
+            font-size: 14px;
+            border: 1px solid #c7d4c0;
+            border-radius: 8px;
+            background-color: var(--paper);
+        }
+
+        .newsletter-btn {
+            padding: 11px 22px;
+            color: white;
+            font-size: 14px;
+            font-weight: 800;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--dark);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--orange);
+        }
+
+        .newsletter-feedback {
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        /* CSS:FAQ-AND-NOTE-END */
+
+
+        /* CSS:FOOTER-START */
+        .store-footer {
+            margin-top: 60px;
+            padding: 40px 20px;
+            color: #fff8ed;
+            text-align: center;
+            background-color: var(--dark);
+            border-radius: 28px 28px 0 0;
+        }
+
+        .footer-logo {
+            margin-bottom: 10px;
+            color: var(--yellow);
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            margin-bottom: 8px;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin: 18px 0;
+        }
+
+        .footer-links a {
+            color: #fff8ed;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--yellow);
+        }
+
+        /* CSS:FOOTER-END */
+
+
+        /* CSS:RWD-START */
+        @media screen and (max-width: 767px) {
+            .store-header {
+                margin: 10px 10px 0;
+                padding: 20px 15px 40px;
+                border-radius: 20px;
+            }
+
+            .store-topline {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 30px;
+            }
+
+            .top-nav {
+                gap: 12px;
+            }
+
+            .store-title {
+                letter-spacing: 2px;
+            }
+
+            .section-block {
+                padding-top: 42px;
+            }
+
+            .book-image {
+                height: 175px;
+            }
+
+            .book-content {
+                padding: 12px;
+            }
+
+            .book-title {
+                font-size: 17px;
+            }
+
+            .book-description {
+                font-size: 12px;
+            }
+
+            .exhibition-box,
+            .curator-card {
+                padding: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .book-card,
+            .book-image,
+            .hero-button,
+            .hero-button-outline {
+                transition: none;
+            }
+
+            .book-card:hover,
+            .hero-button:hover,
+            .hero-button-outline:hover {
+                transform: none;
+            }
+
+            .book-card:hover .book-image {
+                transform: none;
+            }
+        }
+
+        /* CSS:RWD-END */
+    </style>
+</head>
+
+<body>
+
+    <!-- SECTION 01：書店品牌首頁 HERO -->
+    <section id="sec-hero">
+        <header class="store-header">
+            <div class="store-topline">
+                <a href="#sec-hero" class="store-logo">
+                    daily<span>.</span>books
+                </a>
+
+                <nav class="top-nav" aria-label="主導覽列">
+                    <a href="#sec-literature">文學故事</a>
+                    <a href="#sec-history">生活靈感</a>
+                    <a href="#sec-discovery">探索好奇</a>
+                    <a href="#sec-exhibition">本月特展</a>
+                    <a href="#sec-events">週末沙龍</a>
+                    <a href="#sec-visit">門市資訊</a>
+                </nav>
+
+                <div class="store-tagline">
+                    INDEPENDENT BOOKSTORE · SINCE 2026
+                </div>
+            </div>
+
+            <div class="hero-decoration" aria-hidden="true">
+                ✳
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-label">
+                    HELLO, BOOK LOVERS!
+                </div>
+
+                <h1 class="store-title">
+                    日常<span>選書店</span>
+                </h1>
+
+                <p class="hero-description">
+                    不是每本書都要讀得很快，<br>
+                    找一本喜歡的書，享受自己的生活節奏。
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#sec-literature" class="hero-button">
+                        逛逛我們的選書 →
+                    </a>
+                    <a href="#sec-events" class="hero-button-outline">
+                        近期閱讀活動
+                    </a>
+                </div>
+            </div>
+        </header>
+    </section>
+
+
+    <main class="container">
+
+        <!-- SECTION 02：故事與文學 -->
+        <section class="section-block" id="sec-literature">
+            <h2 class="section-heading">
+                <span class="heading-number">01 / DISCOVER</span>
+                故事，從翻開第一頁開始
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                有些書讓人微笑，有些書讓人重新認識自己。這一區，留給喜歡故事、文字與想像的你。
+            </p>
+
+            <div class="row">
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-1.avif" class="book-image" alt="世界文學選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">EDITOR'S PICK</span>
+                            <h3 class="book-title">世界文學</h3>
+                            <p class="book-description">跟著文字旅行，在別人的故事裡遇見不一樣的自己。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 文學與故事</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-2.avif" class="book-image" alt="小說選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">STORY TIME</span>
+                            <h3 class="book-title">小說時光</h3>
+                            <p class="book-description">找個舒服的午後，讓自己沉浸在另一個世界。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 小說選讀</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-3.avif" class="book-image" alt="詩詞選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">SLOW LIVING</span>
+                            <h3 class="book-title">詩與遠方</h3>
+                            <p class="book-description">慢慢讀幾行詩，替忙碌的生活留下一點空白。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 詩詞與散文</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-4.avif" class="book-image" alt="生活散文選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">LITTLE JOY</span>
+                            <h3 class="book-title">生活散文</h3>
+                            <p class="book-description">把平凡日子讀成詩，發現生活裡的小小美好。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 日常靈感</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 03：風格與靈感 -->
+        <section class="section-block" id="sec-history">
+            <h2 class="section-heading">
+                <span class="heading-number">02 / GET INSPIRED</span>
+                為生活加一點新靈感
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                不只閱讀，也探索歷史、文化、藝術與思考。讓喜歡的事物，慢慢變成自己的生活風格。
+            </p>
+
+            <div class="row">
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-5.avif" class="book-image" alt="歷史選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">TIME TRAVEL</span>
+                            <h3 class="book-title">歷史的另一面</h3>
+                            <p class="book-description">從過去尋找線索，發現歷史與今天的奇妙連結。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 歷史探索</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-6.avif" class="book-image" alt="文化選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">CULTURE CLUB</span>
+                            <h3 class="book-title">文化散步</h3>
+                            <p class="book-description">從不同地方的故事裡，認識世界多元的樣貌。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 文化旅行</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-7.avif" class="book-image" alt="哲學與思考選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">THINK ABOUT IT</span>
+                            <h3 class="book-title">思考練習題</h3>
+                            <p class="book-description">不急著找到答案，先學會提出更有趣的問題。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 哲學與思考</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-8.avif" class="book-image" alt="藝術與設計選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">ART & DESIGN</span>
+                            <h3 class="book-title">美感研究所</h3>
+                            <p class="book-description">從色彩、設計到藝術，培養自己的美感雷達。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 藝術與設計</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 04：探索與生活 -->
+        <section class="section-block" id="sec-discovery">
+            <h2 class="section-heading">
+                <span class="heading-number">03 / KEEP EXPLORING</span>
+                好奇心，是最棒的收藏
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                從自然到旅行，從科學到生活提案。讓每一本書，都成為開啟新世界的小小鑰匙。
+            </p>
+
+            <div class="row">
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-9.avif" class="book-image" alt="科學知識選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">WOW SCIENCE</span>
+                            <h3 class="book-title">科學好好玩</h3>
+                            <p class="book-description">帶著好奇心探索世界，發現日常生活中的科學。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 科學探索</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-10.avif" class="book-image" alt="自然生態選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">INTO THE WILD</span>
+                            <h3 class="book-title">山海與自然</h3>
+                            <p class="book-description">讀懂自然的節奏，找回與世界相處的美好方式。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 自然生活</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-11.avif" class="book-image" alt="旅行地理選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">GO SOMEWHERE</span>
+                            <h3 class="book-title">下一站，遠方</h3>
+                            <p class="book-description">出發前先讀一本書，讓旅行多一點故事與想像。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 旅行提案</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-6 col-lg-4 col-xxl-3 mt-3">
+                    <article class="book-card">
+                        <div class="book-image-wrap">
+                            <img src="./image/book-12.avif" class="book-image" alt="生活風格選書" loading="lazy">
+                        </div>
+                        <div class="book-content">
+                            <span class="book-label">BETTER EVERYDAY</span>
+                            <h3 class="book-title">生活提案</h3>
+                            <p class="book-description">收集實用靈感，讓生活過得更自在、更有意思。</p>
+                            <div class="book-bottom">
+                                <span class="book-category"># 生活風格</span>
+                                <span class="book-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 05：本月策展特輯 -->
+        <section class="section-block" id="sec-exhibition">
+            <h2 class="section-heading">
+                <span class="heading-number">04 / MONTHLY EXHIBITION</span>
+                本月主題書展：慢下來的練習
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                每個月我們會挑選一個生活關鍵字，集結獨立出版 Zine、絕版小誌與精選譯作，在店內一角展出。
+            </p>
+
+            <div class="exhibition-box">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-7">
+                        <span class="exhibition-badge">2026 NOVEMBER ISSUE</span>
+                        <h3 class="exhibition-title">在資訊過載的時代，把一個下午還給紙本</h3>
+                        <p class="section-description mb-3">
+                            我們精選了 18 本關於「散步、手作、植物觀察與地方小店」的書籍，邀請你在翻頁的沙沙聲裡重新校準時間感。
+                        </p>
+                        <ul class="exhibition-list">
+                            <li>現場附有店長手寫導讀小卡與書籤自由索取</li>
+                            <li>購買策展任兩本書，即贈限量「日常慢讀」棉麻書衣</li>
+                            <li>展期至本月底止，每週五晚間加開 1 小時安靜共讀時段</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="exhibition-visual">
+                            <div>
+                                <span class="book-label">CURATED LIST · 18 BOOKS</span>
+                                <h4 class="book-title mt-2">《雨天與窗邊的十七種讀法》</h4>
+                                <p class="book-description mb-0">
+                                    「真正的好書不會催促你趕路，它只會安靜地坐在桌角，等你準備好翻開。」
+                                </p>
+                            </div>
+                            <div class="book-bottom">
+                                <span class="book-category"># 實體展區：二樓靠窗長桌</span>
+                                <span class="book-arrow" aria-hidden="true">✦</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 06：店長私房導讀 -->
+        <section class="section-block" id="sec-curator">
+            <h2 class="section-heading">
+                <span class="heading-number">05 / CURATOR'S NOTE</span>
+                本週店長私房推薦
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                不知道從哪一本開始？看看店長這週在櫃檯邊反覆翻閱的枕邊書。
+            </p>
+
+            <div class="curator-card">
+                <p class="curator-quote">
+                    「我們常常以為買書是在買知識，但更多時候，我們買下的是一段願意獨處的時間。這本《小鎮書信集》沒有跌宕起伏的劇情，卻把四季更迭與鄰里問候寫得像剛出爐的麵包一樣溫暖。」
+                </p>
+                <div class="curator-meta">
+                    <span>推薦書目：《小鎮書信集》／ 適合配一杯熱焙茶的睡前讀物</span>
+                    <span>— 主理人 Ally 選書筆記</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 07：實體閱讀空間與咖啡角 -->
+        <section class="section-block" id="sec-space">
+            <h2 class="section-heading">
+                <span class="heading-number">06 / READING SPACE</span>
+                為閱讀保留的三個角落
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                除了選書，我們也把店裡的採光、木桌與咖啡香氣留給每位進門的讀者。
+            </p>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">☀️</div>
+                        <h3 class="feature-title">南向木質窗邊席</h3>
+                        <p class="feature-text">
+                            自然光灑落的六席單人閱讀座，附有溫潤黃光閱讀燈與插座，適合安靜寫字或沉浸讀完整本小說。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">☕</div>
+                        <h3 class="feature-title">手沖單品與無咖啡因茶</h3>
+                        <p class="feature-text">
+                            與在地烘豆師合作的中深焙配方，以及適合傍晚飲用的洋甘菊博士茶，點飲品即可自由翻閱架上試讀本。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🪴</div>
+                        <h3 class="feature-title">獨立小誌與絕版書櫃</h3>
+                        <p class="feature-text">
+                            收錄創作者手工縫製的限量 Zine、攝影集與絕版二手文學，每一本都是可遇不可求的緣分。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 08：週末閱讀沙龍與工作坊 -->
+        <section class="section-block" id="sec-events">
+            <h2 class="section-heading">
+                <span class="heading-number">07 / EVENTS & SALON</span>
+                近期沙龍與手作活動
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                讓閱讀從一個人的安靜時光，延伸成與同好交換想法的溫暖聚會。
+            </p>
+
+            <div class="event-item">
+                <div class="event-date">11 / 28 (六) 14:30</div>
+                <div class="event-info">
+                    <h3 class="event-title">不劇透讀書會：帶著最近最喜歡的一段話來交換</h3>
+                    <p class="event-desc">限額 10 名 · 含手沖咖啡一杯，無須事先讀完指定書目。</p>
+                </div>
+                <span class="event-tag">自由報名中</span>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">12 / 05 (六) 19:00</div>
+                <div class="event-info">
+                    <h3 class="event-title">深夜安靜共讀夜：關掉手機兩小時的紙本派對</h3>
+                    <p class="event-desc">限額 12 名 · 現場提供暖光桌燈與熱花草茶，結束前 15 分鐘自由分享。</p>
+                </div>
+                <span class="event-tag">剩餘 3 席</span>
+            </div>
+
+            <div class="event-item">
+                <div class="event-date">12 / 13 (日) 15:00</div>
+                <div class="event-info">
+                    <h3 class="event-title">手工線裝筆記本工作坊：親手縫製你的 2027 閱讀手帳</h3>
+                    <p class="event-desc">限額 8 名 · 使用日本竹尾美術紙材，零基礎也能完成專屬精裝小書。</p>
+                </div>
+                <span class="event-tag">材料準備中</span>
+            </div>
+        </section>
+
+
+        <!-- SECTION 09：讀者心聲與書評牆 -->
+        <section class="section-block" id="sec-reviews">
+            <h2 class="section-heading">
+                <span class="heading-number">08 / READER VOICES</span>
+                來自讀者的紙條回饋
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                每本書封底夾著的空白小卡，收集了大家在這裡遇見好書的瞬間。
+            </p>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="review-card tone-green">
+                        <p class="review-text">
+                            「原本只是躲雨走進來，結果被分類標籤吸引，挑到一本放在書單裡好久的詩集，店裡的音樂跟燈光都讓人完全放鬆。」
+                        </p>
+                        <div class="review-author">— 週三下午的設計師 Lin</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card tone-pink">
+                        <p class="review-text">
+                            「很喜歡這裡沒有暢銷排行榜的壓迫感，每一區的選書都像朋友真誠的推薦，每次來都能帶走意想不到的靈感。」
+                        </p>
+                        <div class="review-author">— 喜歡生活散文的讀者 小默</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="review-card tone-blue">
+                        <p class="review-text">
+                            「盲盒選書袋超驚喜！只寫了最近的心情關鍵字，收到的那本旅行散文剛好陪我度過週末的長途火車。」
+                        </p>
+                        <div class="review-author">— 線上訂書會員 Chen</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 10：特色選書服務 -->
+        <section class="section-block" id="sec-services">
+            <h2 class="section-heading">
+                <span class="heading-number">09 / BOOK SERVICES</span>
+                為你客製的選書企劃
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                無論是送給自己的每月驚喜，或是替朋友挑選一份有溫度的生日禮物，我們都能為你打理。
+            </p>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🎁</div>
+                        <h3 class="feature-title">季節驚喜盲盒書袋</h3>
+                        <p class="feature-text">
+                            告訴我們你最近喜歡的電影或心情關鍵字，由店員親手挑選 2 本書與手寫推薦信寄送到府。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🎀</div>
+                        <h3 class="feature-title">牛皮紙手工禮物包裝</h3>
+                        <p class="feature-text">
+                            提供免費棉繩牛皮紙包裝與乾燥花書籤代寫服務，讓每一本送出去的書都成為值得珍藏的祝福。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">📚</div>
+                        <h3 class="feature-title">代客尋書與絕版協尋</h3>
+                        <p class="feature-text">
+                            有念念不忘卻找不到的書嗎？留下書名與作者，我們會透過獨立書店通路為你留意庫存。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 11：常見問題 FAQ -->
+        <section class="section-block" id="sec-faq">
+            <h2 class="section-heading">
+                <span class="heading-number">10 / FAQ</span>
+                來店與購書常見問題
+            </h2>
+            <div class="section-line"></div>
+            <p class="section-description">
+                第一次造訪日常選書店嗎？這裡整理了大家最常詢問的小細節。
+            </p>
+
+            <details class="faq-item" open>
+                <summary>店內的書籍都可以拆封試閱嗎？</summary>
+                <p class="faq-answer">
+                    架上每種書目皆備有一本貼有「試讀本」圓標的樣書供自由翻閱；若該書僅剩最後一冊庫存，歡迎請店員協助拆封確認內頁。
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>閱讀座位區需要事先預約或低消嗎？</summary>
+                <p class="faq-answer">
+                    平日閱讀區採自由入座，不限時間；假日尖峰時段（14:00–17:00）點一杯飲品或購買任一本書即可使用座位 2.5 小時。
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>無法親自到店，可以線上訂購寄送嗎？</summary>
+                <p class="faq-answer">
+                    可以的！全館書籍皆提供超商取貨與宅配服務，單筆滿 $990 免運費，並同樣享有免費牛皮紙禮物包裝選項。
+                </p>
+            </details>
+        </section>
+
+
+        <!-- SECTION 12：品牌理念與電子報訂閱 -->
+        <section class="section-block" id="sec-visit">
+            <div class="store-note text-center">
+                <span class="hero-label">11 / OUR PHILOSOPHY & NEWSLETTER</span>
+                <h2 class="store-note-title">
+                    一本書，一個新世界。🌱
+                </h2>
+                <p class="store-note-text">
+                    我們相信，閱讀不必有標準答案。<br>
+                    喜歡就翻開，感動就停留，讓每一次閱讀都成為自己的小小冒險。<br>
+                    <strong>實體門市：</strong>週三至週日 12:00 – 21:00（週一、週二店休）
+                </p>
+
+                <form class="newsletter-form" id="newsletterForm" novalidate>
+                    <input type="email" class="newsletter-input" id="newsletterEmail"
+                        placeholder="輸入 Email，每月收到一份私房書單" aria-label="電子信箱" required>
+                    <button type="submit" class="newsletter-btn">訂閱書單</button>
+                </form>
+                <div class="newsletter-feedback" id="newsletterFeedback" aria-live="polite"></div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER：書店頁尾總覽 -->
+    <footer class="store-footer">
+        <h2 class="footer-logo">
+            日常選書店 daily.books
+        </h2>
+        <p class="footer-text">
+            READ A LITTLE, DREAM A LOT.
+        </p>
+
+        <nav class="footer-links" aria-label="頁尾導覽">
+            <a href="#sec-hero">回到頂部</a>
+            <a href="#sec-literature">文學故事</a>
+            <a href="#sec-history">生活靈感</a>
+            <a href="#sec-discovery">探索好奇</a>
+            <a href="#sec-exhibition">本月特展</a>
+            <a href="#sec-events">沙龍活動</a>
+            <a href="#sec-faq">常見問題</a>
+        </nav>
+
+        <p class="footer-text">
+            不只賣書，也分享生活的各種可能。
+        </p>
+        <p class="footer-text">
+            © 2026 日常選書店. Made with love & books.
+        </p>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 原生表單驗證與互動提示 -->
+    <script>
+        document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('newsletterEmail');
+            const feedback = document.getElementById('newsletterFeedback');
+            const emailVal = emailInput.value.trim();
+
+            if (!emailVal || !emailVal.includes('@')) {
+                feedback.style.color = '#d9534f';
+                feedback.textContent = '請輸入有效的 Email 格式，我們才能把書單寄給你喔！';
+                emailInput.focus();
+                return;
+            }
+
+            feedback.style.color = '#668b68';
+            feedback.textContent = '感謝訂閱！下個月的第一封《日常選書通信》將會寄至 ' + emailVal;
+            emailInput.value = '';
+        });
+    </script>
+
+</body>
+
+</html>

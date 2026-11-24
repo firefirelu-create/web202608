@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一頁式網站-book</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/all.min.css">
+
+</head>
+
+<body>
+    <!--s01 社群連結-->
+    <section id="s01" class="bg-body py-xxl-3">
+        <div class="container">
+            <div class="text-end">
+                <i class="fa-brands fa-facebook fa-2x"></i>
+            </div>
+        </div>
+    </section>
+
+    <!--s02 選單navbar-->
+    <section>
+        <div class="contain">
+            <nav class="navbar navbar-expand-lg bg-success">
+                <div class="container-fluid">
+                    <i class="bi bi-journal-bookmark fa-2x"></i>
+                    <a class="navbar-brand" href="#">daily.book日常書店</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+
+                                <a class="nav-link active" aria-current="page" href="#">首頁</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">ally' 書架</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    與世界同步
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">諾貝爾文學獎</a></li>
+                                    <li><a class="dropdown-item" href="#">布克獎</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">大愛/青春愛讀書</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled">音樂心旅行</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                        <div>
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fa-solid fa-user-plus fa-2x"></i>讀書會代表名
+                            </button>
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#loginModalLabel">
+
+                                <i class="fa-solid fa-right-to-bracket fa-2x"></i>登入</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">讀書會</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                    <div class="row justify-content-center">
+
+                        <div class="col-6 border-end pe-4">
+                            <div class="mb-3">
+                                <label for="username" class="form-label" username>我的代表書名</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="書名字數1~12字。"
+                                    id="username">
+                                <div class="valid-feedback">書名符合規定</div>
+                                <div class="invalid-feedback">書名不符合規定</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="請填入email，字數5~12個。">
+                                <div class="valid-feedback">email符合規定</div>
+                                <div class="invalid-feedback">email不符合規定</div>
+                            </div>
+
+                            <!-- 密碼輸入 -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">密碼</label>
+                                <input type="password" class="form-control" id="password" placeholder="請輸入密碼（字數6~12個）">
+                                <div class="valid-feedback">密碼符合規定</div>
+                                <div class="invalid-feedback">密碼不符合規定（需6~12個字）</div>
+                            </div>
+
+                            <!-- 確認密碼 -->
+                            <div class="mb-3">
+                                <label for="re_password" class="form-label">確認密碼</label>
+                                <input type="password" class="form-control" id="re_password" placeholder="請再次輸入密碼">
+                                <div class="valid-feedback">確認密碼一致</div>
+                                <div class="invalid-feedback">兩次輸入的密碼不一致</div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-6 ps-4">
+                            <div class="mb-3 fw-bold">社群行為規範</div>
+                            <h6>維護安全、友善與合法互動環境<br>
+                                1. 尊重與友善：保持禮貌與尊重，禁止暴力威脅、血腥暴力內容、仇恨言論／歧視、霸凌、肉搜或洩漏個資。<br>
+                                2. 禁止商業行為：不推銷、募資、招攬生意或散發廣告文宣。<br>
+                                3.守法：禁止詐騙、假冒他人、垃圾訊息、販售管制或違禁物品，以及侵害著作權、商標等智慧財產權。<br>
+                                4.誠實誠心誠意：限制有害錯誤資訊、干擾選舉或未清楚標示的誤導性內容。</h6>
+                        </div>
+                        <!-- switch -->
+                        <div class="mb-3">
+                            <label for="">是否願意接收讀書心得</label>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="news_switch">
+                                <label for="news_switch" class="form-check-label">不願意</label>
+                            </div>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary">確認送出</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- loginModal -->
+            <div class="modal fade" id="loginModalLabel" tabindex="-1" aria-labelledby="loginModalLabel"
+                aria-hidden="true" data-bs-backdrop="static">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">登入</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-6">我的代表書名</div>
+                                <div class="col-6">密碼</div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary">確認送出</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-8 mt-4 bg-secondary d-none" id="message">
+                <div class="h1 text-center text-bg-warning py-4 my-4 fw-900">個資填入確認</div>
+                <div id="showmessage">
+                    <div class="h2">姓名: xxx</div>
+                    <div class="h2">Email: xxx</div>
+                </div>
+            </div>
+
+
+
+
+            <!-- Bootstrap JS：保留原本設定 -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+            <!-- jQuery：若其他程式有使用，仍可保留 -->
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+            <script>
+
+
+
+
+                const passwordInput = document.getElementById('password');
+                const rePasswordInput = document.getElementById('re_password');
+
+                passwordInput.addEventListener('input', function () {
+                    const val = this.value;
+                    if (val.length >= 6 && val.length <= 12) {
+                        this.classList.remove('is-invalid');
+                        this.classList.add('is-valid');
+                    } else {
+                        this.classList.remove('is-valid');
+                        this.classList.add('is-invalid');
+                    }
+                    // 當主密碼變動時，如果確認密碼已有輸入，也重新檢查一次
+                    if (rePasswordInput.value.length > 0) {
+                        checkRePassword();
+                    }
+                });
+
+                // 2. 驗證確認密碼是否與密碼相同
+                function checkRePassword() {
+                    if (rePasswordInput.value === passwordInput.value && rePasswordInput.value !== '') {
+                        rePasswordInput.classList.remove('is-invalid');
+                        rePasswordInput.classList.add('is-valid');
+                    } else {
+                        rePasswordInput.classList.remove('is-valid');
+                        rePasswordInput.classList.add('is-invalid');
+                    }
+                }
+
+                rePasswordInput.addEventListener('input', checkRePassword);
+
+
+                let flag_username = false;
+                let flag_email = false;
+
+                //監聽 #username
+                $("#username").on("input", function () {
+                    console.log($(this).val().length);
+                    if ($(this).val().length > 0 && $(this).val().length < 12) {
+                        //符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_username = true;
+                    } else {
+                        //不符合規定
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_username = false;
+                    }
+                });
+
+                //監聽 #Email
+                $("#email").on("input", function () {
+                    if ($(this).val().length > 4 && $(this).val().length < 12) {
+                        //符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_email = true;
+                    } else {
+                        //不符合規定
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_email = false;
+                    }
+                });
+
+                //監聽 switch #news_switch
+                $("#news_switch").on("change", function () {
+                    if ($(this).is(":checked")) {
+                        $(this).next("label").text("願意");
+                    } else {
+                        $(this).next("label").text("不願意");
+                    }
+                });
+
+                //監聽#ok_btn
+                $("#ok_btn").on("click", function () {
+                    if (flag_username && flag_ncikname && flag_email) {
+
+                        $("#message").removeClass("d-none");
+
+                        console.log("ok-btn");
+                        const username = $("#username").val();
+                        const email = $("#email").val();
+
+                        //是否願意接收到最新課程與優惠通知? 三元運算子
+                        const news = $("#news_switch").is(":checked") ? "願意" : "不願意";
+
+
+                        let strHTML = `
+                        <div class="h2">姓名: ${username}</div>                        
+                        <div class="h2">Email: ${email}</div>                                    
+                        <div class="h2">是否願意接收到通知: ${news}</div>
+                        `;
+                        $("#showmessage").html(strHTML);
+                    } else {
+                        // alert("欄位有錯誤，請修正!");
+                        Swal.fire({
+                            title: "欄位有錯誤!",
+                            text: "欄位有錯誤，請修正!",
+                            icon: "error"
+                        });
+                    }
+
+                });
+
+                //監聽 #cancel_btn
+                $("#cancel_btn").on("click", function () {
+                    //清空文字輸入欄位
+                    $("#username").val("");
+                    $("#email").val("");
+
+                    //還原switch
+                    $("#news_switch").prop("checked", false);
+                    $("#news_switch").next("label").text("不願意");
+
+                    // 重設所有的flag
+                    flag_username = false;
+                    flag_email = false;
+
+                })
+
+
+
+                //副程式 or 自訂函式
+                function showdata(data) {
+                    console.log(data);
+                }
+            </script>
+</body>
+
+</html>

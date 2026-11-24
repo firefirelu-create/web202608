@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>凡爾賽宮廷 · 漫畫課程諮詢殿堂</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <!-- 保留原本的外部 CSS -->
+    <link rel="stylesheet" href="../css/public board-1.css">
+    <style>
+        :root {
+            --versailles-ivory: #fbf7ef;
+            --versailles-parchment: #f4ece0;
+            --versailles-card: rgba(255, 252, 246, 0.95);
+            --versailles-gold: #c59b47;
+            --versailles-gold-bright: #e3be6b;
+            --versailles-gold-dark: #8f6a23;
+            --versailles-navy: #1d293d;
+            --versailles-navy-deep: #131b2b;
+            --versailles-navy-soft: #3a4b68;
+            --versailles-crimson: #8e2438;
+            --versailles-emerald: #1f5c48;
+            --versailles-border: rgba(197, 155, 71, 0.42);
+            --versailles-shadow: 0 22px 50px rgba(29, 41, 61, 0.14), 0 4px 14px rgba(197, 155, 71, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Noto Serif TC", "Playfair Display", "PingFang TC", "Microsoft JhengHei", Georgia, serif;
+            color: var(--versailles-navy);
+            background-color: var(--versailles-ivory);
+            background-image:
+                radial-gradient(circle at 12% 10%, rgba(197, 155, 71, 0.16) 0%, transparent 42%),
+                radial-gradient(circle at 88% 18%, rgba(29, 41, 61, 0.10) 0%, transparent 45%),
+                radial-gradient(circle at 50% 95%, rgba(142, 36, 56, 0.08) 0%, transparent 50%),
+                linear-gradient(160deg, #fbf7ef 0%, #f3e8d6 52%, #ebe0cc 100%);
+            background-attachment: fixed;
+        }
+
+        /* 1. 凡爾賽導覽列 Navbar */
+        .versailles-navbar {
+            background: rgba(19, 27, 43, 0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1.5px solid var(--versailles-gold);
+            box-shadow: 0 10px 28px rgba(19, 27, 43, 0.25);
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .versailles-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            color: #fff8e7 !important;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .versailles-brand-emblem {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--versailles-gold-bright), var(--versailles-gold-dark));
+            color: #131b2b;
+            font-size: 1.05rem;
+            box-shadow: 0 0 0 2px rgba(227, 190, 107, 0.35);
+        }
+
+        .versailles-navbar .nav-link {
+            color: #e9dcc2 !important;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.45rem 0.95rem !important;
+            border-radius: 999px;
+            transition: all 0.2s ease;
+        }
+
+        .versailles-navbar .nav-link:hover,
+        .versailles-navbar .nav-link:focus {
+            color: var(--versailles-gold-bright) !important;
+            background: rgba(227, 190, 107, 0.12);
+        }
+
+        .btn-nav-cta {
+            background: linear-gradient(135deg, var(--versailles-gold-bright), var(--versailles-gold));
+            color: #162033 !important;
+            font-weight: 800;
+            border: 1px solid #fff3d1;
+            border-radius: 999px;
+            padding: 0.45rem 1.25rem;
+            letter-spacing: 0.06em;
+            box-shadow: 0 4px 14px rgba(197, 155, 71, 0.35);
+            transition: all 0.22s ease;
+        }
+
+        .btn-nav-cta:hover {
+            transform: translateY(-1px);
+            background: linear-gradient(135deg, #f0ce7e, var(--versailles-gold-bright));
+            box-shadow: 0 6px 18px rgba(227, 190, 107, 0.45);
+        }
+
+        .navbar-toggler {
+            border-color: rgba(227, 190, 107, 0.65);
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(88%) sepia(24%) saturate(750%) hue-rotate(356deg) brightness(98%) contrast(92%);
+        }
+
+        /* 2. 品牌形象 Banner */
+        .versailles-banner {
+            position: relative;
+            background:
+                radial-gradient(circle at 80% 25%, rgba(227, 190, 107, 0.22) 0%, transparent 45%),
+                radial-gradient(circle at 15% 85%, rgba(142, 36, 56, 0.25) 0%, transparent 50%),
+                linear-gradient(135deg, #131b2b 0%, #1f2f4d 55%, #162238 100%);
+            color: #fff9eb;
+            border-bottom: 2px solid var(--versailles-gold);
+            padding: 4.5rem 0 4rem;
+            overflow: hidden;
+        }
+
+        .versailles-banner::after {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border: 1px solid rgba(227, 190, 107, 0.28);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .banner-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.22em;
+            color: var(--versailles-gold-bright);
+            background: rgba(255, 248, 231, 0.08);
+            border: 1px solid rgba(227, 190, 107, 0.48);
+            padding: 0.4rem 1.1rem;
+            border-radius: 999px;
+            margin-bottom: 1.15rem;
+        }
+
+        .banner-heading {
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            line-height: 1.28;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+            margin-bottom: 1.15rem;
+        }
+
+        .banner-heading span {
+            color: var(--versailles-gold-bright);
+        }
+
+        .banner-lead {
+            color: #e6d8b9;
+            font-size: 1.08rem;
+            line-height: 1.85;
+            margin-bottom: 1.85rem;
+        }
+
+        .btn-banner-primary {
+            background: linear-gradient(135deg, var(--versailles-gold-bright), var(--versailles-gold));
+            color: #162033;
+            font-weight: 800;
+            border: 1.5px solid #fff5dc;
+            border-radius: 999px;
+            padding: 0.8rem 2rem;
+            letter-spacing: 0.08em;
+            box-shadow: 0 10px 26px rgba(197, 155, 71, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .btn-banner-primary:hover {
+            background: linear-gradient(135deg, #f3d386, var(--versailles-gold-bright));
+            color: #131b2b;
+            transform: translateY(-2px);
+        }
+
+        .btn-banner-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff6df;
+            font-weight: 700;
+            border: 1.5px solid rgba(227, 190, 107, 0.65);
+            border-radius: 999px;
+            padding: 0.8rem 1.85rem;
+            letter-spacing: 0.06em;
+            transition: all 0.25s ease;
+        }
+
+        .btn-banner-outline:hover {
+            background: rgba(227, 190, 107, 0.16);
+            color: var(--versailles-gold-bright);
+            border-color: var(--versailles-gold-bright);
+        }
+
+        /* Banner 右側宮廷畫框展示牌 */
+        .banner-crest-frame {
+            position: relative;
+            background: linear-gradient(160deg, rgba(255, 250, 240, 0.10), rgba(197, 155, 71, 0.14));
+            border: 1.5px solid rgba(227, 190, 107, 0.55);
+            border-radius: 24px;
+            padding: 2rem 1.75rem;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.32), inset 0 0 0 1px rgba(255, 248, 231, 0.2);
+        }
+
+        .banner-stat-item {
+            background: rgba(19, 27, 43, 0.65);
+            border: 1px solid rgba(227, 190, 107, 0.35);
+            border-radius: 14px;
+            padding: 0.9rem 1rem;
+            text-align: center;
+        }
+
+        .banner-stat-number {
+            font-size: 1.55rem;
+            font-weight: 900;
+            color: var(--versailles-gold-bright);
+            line-height: 1.2;
+        }
+
+        .banner-stat-label {
+            font-size: 0.85rem;
+            color: #e4d5b4;
+            margin-top: 0.25rem;
+        }
+
+        /* 共用區塊標題 */
+        .royal-section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .royal-section-kicker {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            color: var(--versailles-gold-dark);
+            text-transform: uppercase;
+            margin-bottom: 0.45rem;
+        }
+
+        .royal-section-title {
+            font-weight: 900;
+            color: var(--versailles-navy);
+            letter-spacing: 0.06em;
+            margin-bottom: 0.65rem;
+        }
+
+        .royal-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: var(--versailles-gold-dark);
+            font-size: 0.95rem;
+            letter-spacing: 0.25em;
+        }
+
+        .royal-ornament::before,
+        .royal-ornament::after {
+            content: "";
+            height: 1px;
+            width: 68px;
+            background: linear-gradient(90deg, transparent, var(--versailles-gold), transparent);
+        }
+
+        /* 3. 課程介紹卡片區 */
+        .courses-showcase {
+            padding: 4.25rem 0 2.25rem;
+        }
+
+        .course-royal-card {
+            height: 100%;
+            background: var(--versailles-card);
+            border: 1.5px solid var(--versailles-border);
+            border-radius: 20px;
+            padding: 1.85rem 1.6rem;
+            box-shadow: 0 14px 32px rgba(29, 41, 61, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .course-royal-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--versailles-gold);
+            box-shadow: 0 22px 44px rgba(29, 41, 61, 0.14);
+        }
+
+        .course-tag {
+            display: inline-block;
+            align-self: flex-start;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            color: var(--versailles-gold-dark);
+            background: rgba(197, 155, 71, 0.14);
+            border: 1px solid rgba(197, 155, 71, 0.4);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 0.95rem;
+        }
+
+        .course-card-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--versailles-navy);
+            margin-bottom: 0.65rem;
+        }
+
+        .course-card-desc {
+            color: var(--versailles-navy-soft);
+            font-size: 0.95rem;
+            line-height: 1.72;
+            margin-bottom: 1.15rem;
+        }
+
+        .course-highlights {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.35rem;
+            font-size: 0.9rem;
+            color: var(--versailles-navy);
+        }
+
+        .course-highlights li {
+            padding: 0.32rem 0;
+            border-bottom: 1px dashed rgba(197, 155, 71, 0.32);
+        }
+
+        .course-highlights li:last-child {
+            border-bottom: none;
+        }
+
+        .course-highlights li::before {
+            content: "⚜ ";
+            color: var(--versailles-gold-dark);
+            font-weight: 700;
+        }
+
+        .course-card-footer {
+            margin-top: auto;
+            padding-top: 0.95rem;
+            border-top: 1px solid rgba(197, 155, 71, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .course-level {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--versailles-crimson);
+        }
+
+        .btn-course-select {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: #fff8e7;
+            background: var(--versailles-navy);
+            border: 1px solid var(--versailles-gold);
+            border-radius: 999px;
+            padding: 0.4rem 1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-course-select:hover {
+            background: var(--versailles-gold-dark);
+            color: #fffdf8;
+        }
+
+        /* 4. 報名表單區 */
+        .consultation-section {
+            padding: 2.5rem 0 4.5rem;
+        }
+
+        .versailles-form-banner {
+            position: relative;
+            background: linear-gradient(135deg, #172236 0%, #243554 55%, #192438 100%);
+            color: #fff8e7;
+            border: 2px solid var(--versailles-gold);
+            border-radius: 22px;
+            padding: 2.15rem 1.75rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--versailles-shadow), inset 0 0 0 1px rgba(227, 190, 107, 0.35);
+            overflow: hidden;
+        }
+
+        .versailles-form-banner::before {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            border: 1px solid rgba(227, 190, 107, 0.42);
+            border-radius: 15px;
+            pointer-events: none;
+        }
+
+        /* 凡爾賽分區卡片 */
+        .versailles-section-card {
+            background: var(--versailles-card);
+            border: 1.5px solid var(--versailles-border);
+            border-radius: 20px;
+            padding: 1.85rem 1.75rem;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 14px 34px rgba(29, 41, 61, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .versailles-section-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--versailles-gold);
+            box-shadow: 0 20px 42px rgba(29, 41, 61, 0.12), 0 0 0 1px rgba(197, 155, 71, 0.25);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--versailles-navy);
+            padding-bottom: 0.85rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(197, 155, 71, 0.35);
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--versailles-gold), var(--versailles-gold-dark));
+            color: #fffdf8;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(143, 106, 35, 0.3);
+            flex-shrink: 0;
+        }
+
+        /* 標籤與輸入控制項美化 */
+        .form-label {
+            font-weight: 700;
+            color: var(--versailles-navy);
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control,
+        .form-select {
+            background-color: #fffdf9;
+            border: 1.5px solid rgba(197, 155, 71, 0.45);
+            border-radius: 12px;
+            color: var(--versailles-navy);
+            padding: 0.65rem 0.95rem;
+            transition: all 0.22s ease;
+            box-shadow: inset 0 2px 4px rgba(29, 41, 61, 0.03);
+        }
+
+        .form-control-lg,
+        .form-select-lg {
+            padding: 0.75rem 1.05rem;
+            font-size: 1.05rem;
+        }
+
+        .form-control-sm {
+            padding: 0.52rem 0.85rem;
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: #ffffff;
+            border-color: var(--versailles-gold);
+            color: var(--versailles-navy);
+            box-shadow: 0 0 0 0.22rem rgba(197, 155, 71, 0.22), 0 6px 16px rgba(29, 41, 61, 0.06);
+        }
+
+        /* 勾選與單選框框體美化 */
+        .versailles-choice-group {
+            background: rgba(244, 236, 224, 0.55);
+            border: 1px solid rgba(197, 155, 71, 0.28);
+            border-radius: 14px;
+            padding: 1rem 1.15rem;
+        }
+
+        .form-check-input {
+            width: 1.15em;
+            height: 1.15em;
+            border: 1.5px solid var(--versailles-gold-dark);
+            background-color: #fffdf9;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--versailles-navy);
+            border-color: var(--versailles-navy);
+            box-shadow: 0 0 0 0.14rem rgba(197, 155, 71, 0.28);
+        }
+
+        .form-check-label {
+            color: var(--versailles-navy);
+            cursor: pointer;
+            padding-left: 0.2rem;
+        }
+
+        /* Switch 開關樣式 */
+        .form-switch .form-check-input {
+            width: 3em;
+            height: 1.55em;
+            background-color: #d6cbb8;
+            border-color: rgba(143, 106, 35, 0.55);
+        }
+
+        .form-switch .form-check-input:checked {
+            background-color: var(--versailles-gold-dark);
+            border-color: var(--versailles-gold-dark);
+        }
+
+        /* Range 滑桿樣式 */
+        .range-panel {
+            background: linear-gradient(145deg, #fffdf8, #f7efe1);
+            border: 1px solid rgba(197, 155, 71, 0.4);
+            border-radius: 14px;
+            padding: 1.1rem 1.25rem;
+        }
+
+        .study-hours-badge {
+            display: inline-block;
+            color: var(--versailles-crimson);
+            font-weight: 900;
+            padding: 0.1rem 0.65rem;
+            border-radius: 999px;
+            background: rgba(142, 36, 56, 0.08);
+            border: 1px solid rgba(142, 36, 56, 0.25);
+        }
+
+        .form-range::-webkit-slider-thumb {
+            background: linear-gradient(135deg, var(--versailles-gold-bright), var(--versailles-gold-dark));
+            border: 2px solid var(--versailles-navy);
+            box-shadow: 0 2px 8px rgba(29, 41, 61, 0.25);
+        }
+
+        .form-range::-moz-range-thumb {
+            background: linear-gradient(135deg, var(--versailles-gold-bright), var(--versailles-gold-dark));
+            border: 2px solid var(--versailles-navy);
+            box-shadow: 0 2px 8px rgba(29, 41, 61, 0.25);
+        }
+
+        /* 驗證提示文字 */
+        .valid-feedback {
+            color: var(--versailles-emerald);
+            font-weight: 600;
+        }
+
+        .invalid-feedback {
+            color: var(--versailles-crimson);
+            font-weight: 600;
+        }
+
+        #resource_message,
+        #message_message,
+        #job_message {
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-top: 0.65rem;
+        }
+
+        /* 按鈕群美化 */
+        .action-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.9rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-versailles-cancel {
+            background: #fffdf9;
+            color: var(--versailles-navy-soft);
+            border: 1.5px solid rgba(58, 75, 104, 0.45);
+            border-radius: 999px;
+            padding: 0.7rem 1.85rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            transition: all 0.22s ease;
+        }
+
+        .btn-versailles-cancel:hover {
+            background: #efe6d6;
+            color: var(--versailles-navy);
+            border-color: var(--versailles-navy);
+            transform: translateY(-1px);
+        }
+
+        .btn-versailles-confirm {
+            background: linear-gradient(135deg, #1d293d 0%, #2f4263 100%);
+            color: #fff6df;
+            border: 1.5px solid var(--versailles-gold);
+            border-radius: 999px;
+            padding: 0.72rem 2.25rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            box-shadow: 0 10px 24px rgba(29, 41, 61, 0.22), 0 0 0 1px rgba(227, 190, 107, 0.35);
+            transition: all 0.22s ease;
+        }
+
+        .btn-versailles-confirm:hover {
+            background: linear-gradient(135deg, var(--versailles-gold-dark) 0%, var(--versailles-gold) 100%);
+            color: #162033;
+            border-color: #162033;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(143, 106, 35, 0.32);
+        }
+
+        /* 課程資料收集確認區塊 */
+        #message.versailles-result-card {
+            background: linear-gradient(165deg, #fffdf8 0%, #f7efe0 100%) !important;
+            border: 2px solid var(--versailles-gold);
+            border-radius: 22px;
+            padding: 1.75rem 2rem 2.25rem;
+            box-shadow: var(--versailles-shadow);
+            position: relative;
+        }
+
+        #message.versailles-result-card .result-banner {
+            background: linear-gradient(135deg, #1a263b 0%, #2c3e5e 100%) !important;
+            color: #f8dfa0 !important;
+            border: 1px solid var(--versailles-gold);
+            border-radius: 14px;
+            letter-spacing: 0.12em;
+            box-shadow: 0 8px 20px rgba(29, 41, 61, 0.18);
+        }
+
+        #showmessage {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.85rem 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        #showmessage .h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--versailles-navy);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(197, 155, 71, 0.35);
+            border-left: 4px solid var(--versailles-gold);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0;
+            box-shadow: 0 4px 12px rgba(29, 41, 61, 0.05);
+        }
+
+        /* 5. 凡爾賽頁尾 Footer */
+        .versailles-footer {
+            background: linear-gradient(180deg, #162033 0%, #0f1624 100%);
+            color: #dfd1b4;
+            border-top: 2px solid var(--versailles-gold);
+            padding: 3.5rem 0 2rem;
+        }
+
+        .footer-title {
+            color: var(--versailles-gold-bright);
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.55rem;
+        }
+
+        .footer-links a {
+            color: #dfd1b4;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--versailles-gold-bright);
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(227, 190, 107, 0.25);
+            margin: 2rem 0 1.35rem;
+        }
+
+        .footer-bottom {
+            font-size: 0.88rem;
+            color: #bcae91;
+        }
+
+        @media (max-width: 767.98px) {
+            .versailles-banner {
+                padding: 3.25rem 0 3rem;
+            }
+
+            .versailles-section-card {
+                padding: 1.35rem 1.1rem;
+                border-radius: 16px;
+            }
+
+            #showmessage {
+                grid-template-columns: 1fr;
+            }
+
+            .action-bar {
+                flex-direction: column-reverse;
+            }
+
+            .action-bar button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1. 完整 Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top versailles-navbar" aria-label="主導覽列">
+        <div class="container">
+            <a class="versailles-brand" href="#top">
+                <span class="versailles-brand-emblem">⚜</span>
+                <span>凡爾賽漫畫學院</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#versaillesNav"
+                aria-controls="versaillesNav" aria-expanded="false" aria-label="切換導覽選單">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="versaillesNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 mt-3 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#brand-banner">學院理念</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses-section">精選課程</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#consultation-form">課程諮詢報名</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#atelier-footer">聯絡殿堂</a>
+                    </li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <a class="btn btn-nav-cta" href="#consultation-form">立即預約諮詢</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. 品牌形象 Banner -->
+    <section class="versailles-banner" id="brand-banner">
+        <div class="container position-relative" style="z-index: 1;">
+            <div class="row align-items-center g-4 g-lg-5">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <div class="banner-eyebrow">✦ CHÂTEAU DE VERSAILLES · COMIC ATELIER ✦</div>
+                    <h1 class="display-4 banner-heading">
+                        雕琢華麗分鏡美學，<br>
+                        成就你的<span>宮廷級漫畫殿堂</span>
+                    </h1>
+                    <p class="banner-lead">
+                        承襲古典藝術的細膩線條、光影層次與戲劇張力，結合現代數位連載與程式技術工具整合，由資深漫畫編劇與美術導師領航，陪你從零勾勒出令人屏息的原創故事。
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+                        <a href="#consultation-form" class="btn btn-banner-primary">填寫課程諮詢表單</a>
+                        <a href="#courses-section" class="btn btn-banner-outline">探索全系列課程</a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="banner-crest-frame">
+                        <div class="text-center mb-3">
+                            <div style="color: var(--versailles-gold-bright); letter-spacing: 0.25em; font-size: 0.85rem;">
+                                ⚜ ROYAL ATELIER ARCHIVE ⚜
+                            </div>
+                            <h2 class="h4 fw-bold text-white mt-2 mb-1">專屬創作者培育體系</h2>
+                            <p class="small mb-0" style="color: #dfd1b4;">小班制導師點評 · 實戰作品集打造</p>
+                        </div>
+                        <div class="row g-3 mt-1">
+                            <div class="col-6">
+                                <div class="banner-stat-item">
+                                    <div class="banner-stat-number">12+</div>
+                                    <div class="banner-stat-label">連載級師資陣容</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="banner-stat-item">
+                                    <div class="banner-stat-number">96%</div>
+                                    <div class="banner-stat-label">學員完稿作品達成</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="banner-stat-item">
+                                    <div class="banner-stat-number">北中南</div>
+                                    <div class="banner-stat-label">全台同步開課據點</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="banner-stat-item">
+                                    <div class="banner-stat-number">1對1</div>
+                                    <div class="banner-stat-label">專屬學習路徑諮詢</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 課程介紹 -->
+    <section class="courses-showcase" id="courses-section">
+        <div class="container">
+            <div class="royal-section-header">
+                <span class="royal-section-kicker">CURRICULUM COLLECTION</span>
+                <h2 class="h1 royal-section-title">精選漫畫與創作進修課程</h2>
+                <div class="royal-ornament">⚜ 匠心規劃 · 循序進階 ⚜</div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <article class="course-royal-card">
+                        <span class="course-tag">COURSE Ⅰ · 人物造型</span>
+                        <h3 class="course-card-title">巴洛克古典人物與華服設計</h3>
+                        <p class="course-card-desc">
+                            深入解析古典服飾褶皺、蕾絲雕花、珠寶光澤與人物骨架動態，打造極具辨識度的華麗主角群。
+                        </p>
+                        <ul class="course-highlights">
+                            <li>精緻五官與情緒張力刻畫</li>
+                            <li>宮廷禮服與配件結構拆解</li>
+                            <li>數位筆刷線稿與厚塗上色</li>
+                        </ul>
+                        <div class="course-card-footer">
+                            <span class="course-level">入門 ～ 進階</span>
+                            <a href="#consultation-form" class="btn-course-select">諮詢此課程</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <article class="course-royal-card">
+                        <span class="course-tag">COURSE Ⅱ · 分鏡敘事</span>
+                        <h3 class="course-card-title">戲劇張力分鏡與腳本編劇</h3>
+                        <p class="course-card-desc">
+                            掌握視線引導、跨頁大場面構圖與節奏留白技巧，讓每一格畫面都充滿扣人心弦的舞台感。
+                        </p>
+                        <ul class="course-highlights">
+                            <li>起承轉合劇本大綱建構</li>
+                            <li>情緒特寫與運鏡視角切換</li>
+                            <li>商業條漫與頁漫雙規格實戰</li>
+                        </ul>
+                        <div class="course-card-footer">
+                            <span class="course-level">全程度適用</span>
+                            <a href="#consultation-form" class="btn-course-select">諮詢此課程</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <article class="course-royal-card">
+                        <span class="course-tag">COURSE Ⅲ · 場景光影</span>
+                        <h3 class="course-card-title">宮廷建築透視與光影氛圍</h3>
+                        <p class="course-card-desc">
+                            從一點至三點透視出發，結合 3D 輔助模型與浪漫主義光影配色，建立宏偉的世界觀舞台。
+                        </p>
+                        <ul class="course-highlights">
+                            <li>古典廊柱與水晶吊燈透視</li>
+                            <li>晨曦、燭光與夜宴色調演練</li>
+                            <li>快速背景完稿流程優化</li>
+                        </ul>
+                        <div class="course-card-footer">
+                            <span class="course-level">基礎 ～ 進階</span>
+                            <a href="#consultation-form" class="btn-course-select">諮詢此課程</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <article class="course-royal-card">
+                        <span class="course-tag">COURSE Ⅳ · 作品集與數位展示</span>
+                        <h3 class="course-card-title">個人漫畫作品集與數位系統實作</h3>
+                        <p class="course-card-desc">
+                            結合原創連載企劃與個人作品展示網頁概念（支援 php / java / Pyton / MySQL 等技術選修），打造完整創作者品牌。
+                        </p>
+                        <ul class="course-highlights">
+                            <li>編輯部投稿規格與企劃書</li>
+                            <li>個人作品互動展示與資料管理</li>
+                            <li>一對一作品診斷與職涯規劃</li>
+                        </ul>
+                        <div class="course-card-footer">
+                            <span class="course-level">作品集衝刺</span>
+                            <a href="#consultation-form" class="btn-course-select">諮詢此課程</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 報名表單區（完整保留原始功能與欄位） -->
+    <section class="consultation-section" id="consultation-form">
+        <div class="container">
+            <div class="versailles-form-banner text-center">
+                <div class="display-5 fw-900 my-2" style="letter-spacing: 0.08em;">補習班課程資料收集</div>
+                <p class="mb-0" style="color: #e6d7b5;">
+                    請填寫以下諮詢資料，我們的課程顧問將依據您的時段、地點與學習偏好提供專屬建議。
+                </p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-9">
+
+                    <!-- 分區一：基本資料 -->
+                    <div class="versailles-section-card">
+                        <div class="section-heading">
+                            <span class="section-badge">Ⅰ</span>
+                            <span>基本資料</span>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="username" class="form-label">姓名</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="姓名字數1~6字。" id="username">
+                                <div class="valid-feedback">姓名輸入符合規定</div>
+                                <div class="invalid-feedback">姓名輸入不符合規定</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="nickname" class="form-label">暱稱</label>
+                                <input type="text" class="form-control form-control-lg" id="nickname" placeholder="暱稱字數2~8字。">
+                                <div class="valid-feedback">暱稱輸入符合規定</div>
+                                <div class="invalid-feedback">暱稱輸入不符合規定</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">email</label>
+                                <input type="email" class="form-control form-control-sm" id="email" placeholder="mail字數5~10字。">
+                                <div class="valid-feedback">email輸入符合規定</div>
+                                <div class="invalid-feedback">email輸入不符合規定</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="myclass" class="form-label">最有興趣的課程</label>
+                                <input type="text" id="myclass" class="form-control" list="classList" placeholder="請填入最有興趣的課程,字數2~8字。">
+                                <datalist id="classList">
+                                    <option value="php"></option>
+                                    <option value="java"></option>
+                                    <option value="Pyton"></option>
+                                    <option value="MySQL"></option>
+                                </datalist>
+                                <div class="valid-feedback">課程輸入符合規定</div>
+                                <div class="invalid-feedback">課程輸入不符合規定</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 分區二：課程需求 -->
+                    <div class="versailles-section-card">
+                        <div class="section-heading">
+                            <span class="section-badge">Ⅱ</span>
+                            <span>課程需求</span>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="classtime" class="form-label">希望的上課時段</label>
+                                <select name="" id="classtime" class="form-select form-select-lg">
+                                    <option value="" selected disabled class="text-center">---請選擇上課時段---</option>
+                                    <option value="平日上午">平日上午</option>
+                                    <option value="平日下午">平日下午</option>
+                                    <option value="假日上午">假日上午</option>
+                                    <option value="假日下午">假日下午</option>
+                                    <option value="平日晚上">平日晚上</option>
+                                    <option value="假日晚上">假日晚上</option>
+                                </select>
+                                <div class="valid-feedback">已選擇上課時段!</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="classcity" class="form-label">希望的上課縣市</label>
+                                <select name="" id="classcity" class="form-select form-select-lg">
+                                    <option value="" selected disabled class="text-center">---請選擇上課時段---</option>
+                                    <option value="臺中市">臺中市</option>
+                                    <option value="臺北市">臺北市</option>
+                                    <option value="臺南市">臺南市</option>
+                                </select>
+                                <div class="valid-feedback">已選擇上課縣市!</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">希望獲得的學習資源(可複選)</label>
+                                <div class="versailles-choice-group">
+                                    <div class="form-check mb-2">
+                                        <input type="checkbox" class="form-check-input chk_resource" id="resource01" value="課程講義">
+                                        <label for="resource01" class="form-check-label">課程講義</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input type="checkbox" class="form-check-input chk_resource" id="resource02" value="教學影片">
+                                        <label for="resource02" class="form-check-label">教學影片</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input type="checkbox" class="form-check-input chk_resource" id="resource03" value="實作練習">
+                                        <label for="resource03" class="form-check-label">實作練習</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input chk_resource" id="resource04" value="課程輔導">
+                                        <label for="resource04" class="form-check-label">課程輔導</label>
+                                    </div>
+                                    <!--自己設計的feedback-->
+                                    <div id="resource_message" class="text-danger">
+                                        至少請選擇一項學習資源
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">如何知道本補習訊息(可複選)</label>
+                                <div class="versailles-choice-group">
+                                    <div class="form-check mb-2">
+                                        <input type="checkbox" class="form-check-input chk_message" id="message01" value="Facebook">
+                                        <label for="message01" class="form-check-label">Facebook</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input type="checkbox" class="form-check-input chk_message" id="message02" value="Instagram">
+                                        <label for="message02" class="form-check-label">Instagram</label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input type="checkbox" class="form-check-input chk_message" id="message03" value="Google">
+                                        <label for="message03" class="form-check-label">Google</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input chk_message" id="message04" value="other">
+                                        <label for="message04" class="form-check-label">other</label>
+                                    </div>
+                                    <!--自己設計的feedback-->
+                                    <div id="message_message" class="text-danger">
+                                        至少請選擇一項訊息來源
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 分區三：學習偏好 -->
+                    <div class="versailles-section-card">
+                        <div class="section-heading">
+                            <span class="section-badge">Ⅲ</span>
+                            <span>學習偏好</span>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <label for="form-check" class="form-label">目前的就業狀(單選)</label>
+                                <div class="versailles-choice-group">
+                                    <div class="form-check form-check-inline me-4">
+                                        <input type="radio" id="job01" class="form-check-input radio_job" name="job" value="就業中">
+                                        <label for="job01">就業中</label>
+                                    </div>
+                                    <div class="form-check form-check-inline me-4">
+                                        <input type="radio" id="job02" class="form-check-input radio_job" name="job" value="待業中">
+                                        <label for="job02">待業中</label>
+                                    </div>
+                                    <div class="form-check form-check-inline me-4">
+                                        <input type="radio" id="job03" class="form-check-input radio_job" name="job" value="學生">
+                                        <label for="job03">學生</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" id="job04" class="form-check-input radio_job" name="job" value="other">
+                                        <label for="job04">other</label>
+                                    </div>
+                                    <div id="job_message" class="text-danger">
+                                        請選擇目前就業狀態
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--switch-->
+                            <div class="col-md-6">
+                                <label for="" class="form-label">是否願意收到最新資訊</label>
+                                <div class="versailles-choice-group h-100 d-flex align-items-center">
+                                    <div class="form-check form-switch mb-0">
+                                        <input type="checkbox" class="form-check-input" id="new_switch">
+                                        <label for="new_switch" class="form-check-label">不願意</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--range-->
+                            <div class="col-md-6">
+                                <div class="range-panel">
+                                    <label for="" class="form-label">每週預計投入的學習時數:
+                                        <span class="study-hours-badge text-primary fw-bold h4" id="study_range-text">5</span>小時
+                                    </label>
+                                    <input type="range" id="study_range" class="form-range" min="1" max="20" step="1" value="5">
+
+                                    <div class="d-flex justify-content-between">
+                                        <span class="h5-fw-bold text-primary">1</span>
+                                        <span class="h5-fw-bold text-primary">20</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 按鈕列 -->
+                    <div class="action-bar">
+                        <button class="btn btn-outline-secondary btn-versailles-cancel" id="cancel_btn">取消</button>
+                        <button class="btn btn-primary btn-versailles-confirm" id="ok_btn">確認</button>
+                    </div>
+
+                    <!-- 課程資料收集確認 -->
+                    <div class="mt-4 bg-secondary d-none versailles-result-card" id="message">
+                        <div class="h1 text-center text-bg-warning py-4 my-4 fw-900 result-banner">課程資料收集確認</div>
+                        <div id="showmessage">
+                            <div class="h4">姓名:</div>
+                            <div class="h4">暱稱:</div>
+                            <div class="h4">email:</div>
+                            <div class="h4">最有興趣的課程:</div>
+                            <div class="h4">希望的上課時段:</div>
+                            <div class="h4">選擇上課縣市:</div>
+                            <div class="h4">希望獲得的學習資源:</div>
+                            <div class="h4">訊息來源:</div>
+                            <div class="h4">就業狀態:</div>
+                            <div class="h4">取得最新訊息:</div>
+                            <div class="h4">每週預計投入的學習時數:</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 完整 Footer -->
+    <footer class="versailles-footer" id="atelier-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="versailles-brand mb-3">
+                        <span class="versailles-brand-emblem">⚜</span>
+                        <span>凡爾賽漫畫學院 · Versailles Comic Atelier</span>
+                    </div>
+                    <p class="small" style="color: #cfc0a3; line-height: 1.8;">
+                        專注於華麗敘事漫畫、人物服飾造型與數位創作實務的專業教育殿堂。為每一位懷抱故事靈魂的學員，提供系統化教學與專屬顧問輔導。
+                    </p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <h3 class="footer-title">網站導覽</h3>
+                    <ul class="footer-links small">
+                        <li><a href="#brand-banner">品牌理念與特色</a></li>
+                        <li><a href="#courses-section">精選課程總覽</a></li>
+                        <li><a href="#consultation-form">線上課程諮詢表單</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-8 col-lg-4">
+                    <h3 class="footer-title">聯絡與服務時間</h3>
+                    <ul class="footer-links small">
+                        <li>諮詢專線：(04) 2328-1789</li>
+                        <li>服務信箱：atelier@versailles-comic.edu.tw</li>
+                        <li>實體分校：臺中市 · 臺北市 · 臺南市</li>
+                        <li>諮詢時段：週一至週日 10:00 – 21:00</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 footer-bottom">
+                <div>© 2026 凡爾賽漫畫學院 Versailles Comic Atelier. All Rights Reserved.</div>
+                <div>⚜ 凡爾賽宮廷美學 · 漫畫課程諮詢系統 ⚜</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let flag_username = false;
+        let flag_nickname = false;
+        let flag_email = false;
+        let flag_myclass = false;
+        let flag_classtime = false;
+        let flag_classcity = false;
+        let flag_resource = false;
+        let flag_message = false;
+        let flag_job = false;
+        //取得最新訊息-不用插旗子
+        //每週預計投入的學習時數-不用插旗子
+
+
+
+        $(function () {
+            //監聽#username
+            $("#username").on("input", function () {
+                console.log($(this).val().length);
+                if ($(this).val().length > 0 && $(this).val().length < 7) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_username = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_username = false;
+
+                }
+            });
+
+
+            //監聽#nickname
+            $("#nickname").on("input", function () {
+
+                if ($(this).val().length > 1 && $(this).val().length < 9) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_nickname = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_nickname = false;
+
+                }
+            });
+
+
+
+            //監聽#email
+            $("#email").on("input", function () {
+
+                if ($(this).val().length > 4 && $(this).val().length < 11) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_email = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_email = false;
+
+                }
+            });
+
+            //監聽#myclass
+            $("#myclass").on("change", function () {
+
+                if ($(this).val().length > 2 && $(this).val().length < 11) {
+                    //符合規定
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_myclass = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_myclass = false;
+
+                }
+            });
+
+            //監聽 縣市名稱選單select
+            $("#classcity").on("change", function () {
+                if ($(this).val() != "") {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_classcity = true;
+                } else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_classcity = false;
+                }
+            });
+
+            //監聽#classtime
+            $("#classtime").on("change", function () {
+
+                if ($(this).val() != "") {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag_classtime = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag_classtime = false;
+
+                }
+            });
+
+            //希望的上課縣巿 select 選單
+            //1.載入縣巿資料
+            $.ajax({
+                type: "GET",
+                url: "../web202608/js/CityCountyData.json",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    Swal.fire({
+                        title: "資料錯誤",
+                        text: "取後縣巿錯誤,請聯絡管理員!",
+                        icon: "error"
+                    });
+                }
+            });
+
+
+            //監聽 學習資源 checkbox 複選.長度
+            $(".chk_resource").on("change", function () {
+                console.log($(".chk_resource:checked"));
+                console.log($(".chk_resource:checked").length);
+                if ($(".chk_resource:checked").length > 0) {
+                    $("#resource_message").removeClass("text-danger");
+                    $("#resource_message").addClass("text-success");
+                    $("#resource_message").text("你已選擇一項或以上學習資源");
+                    flag_resource = true;
+                } else {
+                    $("#resource_message").removeClass("text-success");
+                    $("#resource_message").addClass("text-danger");
+                    $("#resource_message").text("至少請選擇一項學習資源!");
+                    flag_resource = false;
+                }
+
+            })
+
+            //監聽 訊息來源checkbox 複選.長度
+            $(".chk_message").on("change", function () {
+
+                if ($(".chk_message:checked").length > 0) {
+                    $("#message_message").removeClass("text-danger");
+                    $("#message_message").addClass("text-success");
+                    $("#message_message").text("你已選擇一項或以上訊息來源");
+                    flag_message = true;
+                } else {
+                    $("#message_message").removeClass("text-success");
+                    $("#message_message").addClass("text-danger");
+                    $("#message_message").text("至少請選擇一項訊息來源!");
+                    flag_message = false;
+                }
+
+            })
+
+            //監聽 就業狀態 radio 單選.長度
+            $(".radio_job").on("change", function () {
+
+                if ($(".radio_job:checked").length > 0) {
+                    $("#job_message").removeClass("text-danger");
+                    $("#job_message").addClass("text-success");
+                    $("#job_message").text("已選擇就業狀態");
+                    flag_job = true;
+                } else {
+                    $("#job_message").removeClass("text-success");
+                    $("#job_message").addClass("text-danger");
+                    $("#job_message").text("未選擇就業狀態!");
+                    flag_job = false;
+                }
+
+            })
+
+
+            //監聽 取得最新訊息 switch #new_swithc
+            $("#new_switch").on("change", function () {
+                if ($(this).is(":checked")) {
+                    $(this).next("label").text("願意");
+                } else {
+                    $(this).next("label").text("不願意");
+                }
+            });
+
+            //每週預計投入的學習時數 study_range
+            $("#study_range").on("input", function () {
+                console.log($(this).val());
+                $("#study_range-text").text($(this).val());
+            });
+
+
+
+
+
+            //監聽ok_btn
+            $("#ok_btn").on("click", function () {
+                if (flag_username && flag_nickname && flag_email && flag_myclass && flag_classtime && flag_classcity && flag_resource && flag_message && flag_job) {
+
+                    $("#message").removeClass("d-none");
+
+                    console.log("ok_btn");
+                    const username = $("#username").val();
+                    const nickname = $("#nickname").val();
+                    const email = $("#email").val();
+                    const myclass = $("#myclass").val();
+                    const classtime = $("#classtime").val();
+                    const classcity = $("#classcity").val();
+
+                    //取得希望的學習資源checkbox的勾選資料
+                    let resource = []; //收集勾選資料
+                    $(".chk_resource:checked").each(function () {
+                        resource.push($(this).val());
+                    });
+                    console.log(resource);
+
+                    //取得如何知道本補習訊息checkbox的勾選資料
+                    let message = []; //收集勾選資料
+                    $(".chk_message:checked").each(function () {
+                        message.push($(this).val());
+                    });
+                    console.log(message);
+
+                    //取得目前就業狀態
+                    const job = $("input[name='job']:checked").val();
+
+
+                    //三元運算子 取得最新訊息
+                    const news = $("news_switch").is(":checked") ? "願意" : "不願意";
+
+                    //每週預計投入的學習時數-強制轉換成數字 number()
+                    const study_range = Number($("#study_range").val());
+
+
+                    let strHTML = `
+                            <div class="h4">姓名: ${username}</div>
+                            <div class="h4">暱稱: ${nickname}</div>
+                            <div class="h4">email: ${email}</div>
+                            <div class="h4">最有興趣的課程: ${myclass}</div>
+                             <div class="h4">課程時段: ${classtime}</div>
+                             <div class="h4">希望的上課縣市: ${classcity}</div>
+                             <div class="h4">希望獲得的學習資源: ${resource.join(" ,")}</div>
+                             <div class="h4">訊息來源: ${message.join(" ,")}</div>
+                             <div class="h4">就業狀態: ${job}</div>
+                             <div class="h4">取得最新訊息: ${news}</div>
+                             <div class="h4">每週預計投入的學習時數: ${study_range}</div>
+                            `;
+
+                    $("#showmessage").html(strHTML);
+
+                } else {
+                    Swal.fire({
+                        title: "欄位有錯誤",
+                        text: "欄位有錯誤,請修正!",
+                        icon: "error"
+                    });
+                }
+            });
+
+            //監聽 #cancel_btn
+            $("#cancel_btn").on("click", function () {
+                // 清空文字輸入欄位
+                $("#username").val("");
+                $("#nickname").val("");
+                $("#email").val("");
+                $("#myclass").val("");
+
+                // 清空select
+                $("#classtime").val("");
+                $("#classcity").val("");
+
+                // 清空checkbox
+                $(".chk_resource").prop("checked", false);
+                $(".chk_resourcenews").prop("checked", false);
+
+                // 清空radio
+                $(".radio_job").prop("checked", false);
+
+                // 還原switch
+                $("#news_switch").prop("checked", false);
+                $("#news_switch").next("label").text("不願意");
+
+                // 還原range
+                $("#study_range").val(5);
+                $("#study_                                  range_text").text(5);
+
+                //移除表單驗證程式
+                $(".is-valid").removeClass("is-valid");
+            $(".is-invalid").removeClass("is-invalid");
+
+                //還原checkbox and radio提示詞
+                $("#resource_message").removeClass("text-success").addClass("text-danger").text("至少請選擇一項學習資源");
+
+                $("#resourcenews_message").removeClass("text-success").addClass("text-danger").text("至少請選擇一項本補習訊息來源");
+
+            $("#job_message").removeClass("text-success").addClass("text-danger").text("請選擇目前的就業狀態");
+
+
+                //重設所有旗子
+                flag_username = false;
+            flag_ncikname = false;
+            flag_email = false;
+            flag_myclass = false;
+            flag_classtime = false;
+            flag_classcity = false;
+            flag_resource = false;
+            flag_resourcenews = false;
+            flag_job = false;
+
+                //隱藏關閉 課程資料收集確認 #message
+                $("#message").addClass("d-none");
+            $("#showmessage").empty();
+
+            })
+
+        });
+
+
+        //副程式 or 自訂函式
+        function showdata(data) {
+            console.log(data);
+
+            $("#classcity").empty();
+            $("#classcity").append(`<option value="" selected disabled class="text-center">---請選擇上課時段---</option>
+                 `);
+            data.forEach(function (item) {
+                console.log(item.CityName);
+
+                const strHtml = `<option value="${item.CityName}">${item.CityName}</option>`;
+                $("#classcity").append(strHtml);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
