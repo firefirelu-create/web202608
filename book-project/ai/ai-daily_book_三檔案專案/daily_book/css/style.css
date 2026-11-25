@@ -1,0 +1,396 @@
+/* ==============================
+   daily.book 日常選書店
+   初學者版本：以 class 設定樣式
+================================= */
+
+:root {
+    --green-dark: #294b3b;
+    --green: #55745b;
+    --green-light: #e8eee6;
+    --cream: #f8f6ef;
+    --paper: #fffefa;
+    --text: #333b34;
+    --muted: #737b73;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    background-color: var(--paper);
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.top-bar {
+    padding: 8px 0;
+    color: white;
+    background-color: var(--green-dark);
+}
+
+.top-bar a {
+    font-size: 1.1rem;
+}
+
+.site-navbar {
+    background-color: var(--paper);
+    box-shadow: 0 3px 14px rgba(35, 55, 40, 0.08);
+}
+
+.navbar-brand {
+    color: var(--green-dark);
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.navbar-brand i {
+    margin-right: 6px;
+}
+
+.navbar-brand span {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.nav-link {
+    color: var(--text);
+    margin: 0 5px;
+}
+
+.nav-link:hover {
+    color: var(--green);
+}
+
+.btn-green {
+    color: white;
+    background-color: var(--green-dark);
+    border: 1px solid var(--green-dark);
+}
+
+.btn-green:hover {
+    color: white;
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.btn-outline-green {
+    color: var(--green-dark);
+    border: 1px solid var(--green-dark);
+}
+
+.btn-outline-green:hover {
+    color: white;
+    background-color: var(--green-dark);
+}
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    min-height: 430px;
+    padding: 70px 0;
+    background: linear-gradient(90deg, rgba(248, 246, 239, 0.98), rgba(248, 246, 239, 0.78)),
+        url("../images/reading-banner.jpg") center/cover no-repeat;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.eyebrow {
+    margin-bottom: 12px;
+    color: var(--green);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.hero-section h1 {
+    margin-bottom: 18px;
+    color: var(--green-dark);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+}
+
+.hero-text {
+    max-width: 520px;
+    margin-bottom: 28px;
+    color: #59635a;
+    font-size: 1.1rem;
+}
+
+.section-space {
+    padding: 75px 0;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-heading h2,
+.about-section h2 {
+    color: var(--green-dark);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.section-heading > p:last-child {
+    color: var(--muted);
+}
+
+.search-area {
+    max-width: 520px;
+    margin: 0 auto 30px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 14px;
+    border: 1px solid #dce3d9;
+    border-radius: 30px;
+    background-color: white;
+}
+
+.search-box i {
+    color: var(--green);
+}
+
+.search-box .form-control {
+    border: 0;
+    box-shadow: none;
+}
+
+.search-hint {
+    margin: 8px 0 0 12px;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.book-card {
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid #e8e9e1;
+    border-radius: 14px;
+    background-color: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(38, 65, 47, 0.12);
+}
+
+.book-cover {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background-color: var(--green-light);
+}
+
+.book-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #f0f0e9;
+}
+
+.cover-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    color: var(--green-dark);
+    text-align: center;
+    background: linear-gradient(145deg, #e8eee6, #d5e0d3);
+}
+
+.cover-placeholder i {
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.cover-placeholder strong {
+    font-size: 1.15rem;
+}
+
+.cover-placeholder small {
+    margin-top: 10px;
+    color: #69786b;
+    letter-spacing: 2px;
+}
+
+.book-info {
+    padding: 18px;
+}
+
+.book-category {
+    display: inline-block;
+    margin-bottom: 9px;
+    padding: 3px 10px;
+    color: var(--green-dark);
+    border-radius: 20px;
+    background-color: var(--green-light);
+    font-size: 0.78rem;
+}
+
+.book-info h3 {
+    min-height: 3.2em;
+    margin-bottom: 10px;
+    color: var(--green-dark);
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.book-info p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.book-info .book-icon {
+    margin-right: 5px;
+    color: var(--green);
+}
+
+.no-result {
+    padding: 25px;
+    color: var(--muted);
+    text-align: center;
+}
+
+.about-section {
+    background-color: var(--cream);
+}
+
+.about-section p {
+    color: #606a60;
+}
+
+.about-card {
+    padding: 45px 35px;
+    border-radius: 18px;
+    background-color: white;
+    box-shadow: 0 8px 25px rgba(38, 65, 47, 0.08);
+}
+
+.about-card > i {
+    color: var(--green);
+    font-size: 2.8rem;
+}
+
+.about-card h3 {
+    margin-top: 15px;
+    color: var(--green-dark);
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.rules-title {
+    color: var(--green-dark);
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.rules-list {
+    padding-left: 1.3rem;
+    color: #59635a;
+    font-size: 0.92rem;
+}
+
+.rules-list li {
+    margin-bottom: 9px;
+}
+
+.site-footer {
+    padding: 40px 0;
+    color: #edf2ec;
+    background-color: var(--green-dark);
+}
+
+.site-footer h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.site-footer p {
+    margin-bottom: 5px;
+}
+
+.site-footer a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #d8e5d6;
+    text-decoration: underline;
+}
+
+.footer-small {
+    color: #bdcbbd;
+    font-size: 0.85rem;
+}
+
+/* 平板與手機 */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        align-items: stretch !important;
+        padding: 12px 0;
+    }
+
+    .navbar-nav .btn {
+        width: 100%;
+    }
+
+    .hero-section {
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-section {
+        min-height: 340px;
+        padding: 55px 0;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .section-space {
+        padding: 50px 0;
+    }
+
+    .section-heading h2,
+    .about-section h2 {
+        font-size: 1.7rem;
+    }
+
+    .book-info {
+        padding: 12px;
+    }
+
+    .book-info h3 {
+        min-height: 4.5em;
+        font-size: 0.98rem;
+    }
+
+    .book-info p {
+        font-size: 0.82rem;
+    }
+
+    .about-card {
+        padding: 30px 22px;
+    }
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="daily.book 日常選書店，分享值得慢慢閱讀的好書。">
+    <title>daily.book｜日常選書店</title>
+
+    <!-- Bootstrap：負責網格、導覽列與 Modal -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons：統一網站圖示，避免原本混用不同圖示套件 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- 自己的 CSS 放在 Bootstrap 後面，方便覆寫樣式 -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container d-flex justify-content-end align-items-center gap-3">
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light site-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#home">
+                    <i class="bi bi-journal-bookmark-fill"></i>
+                    daily.book <span>日常選書店</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false"
+                    aria-label="開啟導覽選單">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link" href="#home">首頁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#books">ally' 書架</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">關於讀書會</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <button class="btn btn-outline-green" type="button" data-bs-toggle="modal"
+                                data-bs-target="#registerModal">
+                                <i class="bi bi-person-plus"></i> 加入讀書會
+                            </button>
+                        </li>
+                        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                            <button class="btn btn-green" type="button" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">
+                                <i class="bi bi-box-arrow-in-right"></i> 登入
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 主視覺 -->
+        <section class="hero-section" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <p class="eyebrow"><i class="bi bi-book-half"></i> READ · REFLECT · SHARE</p>
+                    <h1>在日常裡，遇見一本好書。</h1>
+                    <p class="hero-text">讓閱讀成為生活的一部分，從一本書開始，慢慢認識更寬廣的世界。</p>
+                    <a class="btn btn-green btn-lg" href="#books">探索本月選書 <i class="bi bi-arrow-down"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 書籍清單 -->
+        <section class="books-section section-space" id="books">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <p class="eyebrow">OUR BOOKSHELF</p>
+                    <h2>讀書會選書</h2>
+                    <p>一輩子書心平安，讓好書陪伴每一段日常。</p>
+                </div>
+
+                <div class="search-area">
+                    <label class="visually-hidden" for="bookSearch">搜尋書名</label>
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input type="search" id="bookSearch" class="form-control"
+                            placeholder="搜尋書名，例如：撒哈拉的故事">
+                    </div>
+                    <p class="search-hint" id="searchHint">目前共有 8 本選書</p>
+                </div>
+
+                <div class="row g-4" id="bookList">
+                    <!-- JavaScript 會將 8 本書籍放在這裡 -->
+                </div>
+                <p class="no-result d-none" id="noResult">找不到符合的書籍，請試試其他關鍵字。</p>
+            </div>
+        </section>
+
+        <!-- 讀書會介紹 -->
+        <section class="about-section section-space" id="about">
+            <div class="container">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <p class="eyebrow">ABOUT OUR BOOK CLUB</p>
+                        <h2>閱讀，不必匆忙。</h2>
+                        <p>我們相信，每一本書都像一扇窗。透過閱讀、分享與交流，讓不同的人生經驗在這裡相遇。</p>
+                        <p>選一本喜歡的書，帶著自己的想法加入，一起享受閱讀的樂趣。</p>
+                        <button class="btn btn-green" type="button" data-bs-toggle="modal"
+                            data-bs-target="#registerModal">加入我們 <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-card">
+                            <i class="bi bi-chat-heart"></i>
+                            <h3>分享一本書，也分享一種生活。</h3>
+                            <p>友善交流、尊重差異，讓每一次討論都成為新的收穫。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container text-center">
+            <h2><i class="bi bi-journal-bookmark-fill"></i> daily.book 日常選書店</h2>
+            <p>一書一世界 · 用閱讀收藏生活</p>
+            <p class="footer-small">ally'app 專題報告</p>
+            <a href="https://junlearning.com/bookclub/" target="_blank" rel="noopener noreferrer">
+                參考學習：瓦基的職場支援讀書會
+            </a>
+        </div>
+    </footer>
+
+    <!-- 加入讀書會 Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="registerTitle">加入日常讀書會</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+                </div>
+                <form id="registerForm" novalidate>
+                    <div class="modal-body">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">我的代表書名／暱稱</label>
+                                    <input type="text" class="form-control" id="username" maxlength="12"
+                                        placeholder="請輸入 1～12 個字" required>
+                                    <div class="invalid-feedback">請輸入 1～12 個字。</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">請輸入正確的 Email。</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">密碼</label>
+                                    <input type="password" class="form-control" id="password"
+                                        minlength="6" maxlength="12" placeholder="6～12 個字" required>
+                                    <div class="invalid-feedback">密碼需要 6～12 個字。</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="re_password" class="form-label">確認密碼</label>
+                                    <input type="password" class="form-control" id="re_password" placeholder="請再次輸入密碼" required>
+                                    <div class="invalid-feedback">兩次輸入的密碼必須相同。</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="rules-title">社群行為規範</h3>
+                                <ol class="rules-list">
+                                    <li>尊重友善：保持禮貌，不霸凌、不歧視，也不洩漏他人個資。</li>
+                                    <li>禁止廣告：不推銷、不募資、不散發未經同意的廣告。</li>
+                                    <li>遵守法律：不詐騙、不冒用他人身分，並尊重著作權。</li>
+                                    <li>誠實交流：分享資訊時盡量確認來源，不散播誤導內容。</li>
+                                </ol>
+                                <div class="form-check form-switch mt-4">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="newsSwitch">
+                                    <label class="form-check-label" for="newsSwitch">願意接收讀書心得與活動消息</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-success d-none mt-3" id="registerMessage" role="status"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-outline-secondary">清除</button>
+                        <button type="submit" class="btn btn-green">確認送出</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 登入 Modal：此為前端練習示範，尚未連接資料庫 -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="loginTitle">會員登入</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+                </div>
+                <form id="loginForm">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">密碼</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <p class="small text-muted mb-0">目前為畫面展示，尚未連接會員資料庫。</p>
+                        <div class="alert alert-info d-none mt-3" id="loginMessage" role="status"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-green">登入</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
